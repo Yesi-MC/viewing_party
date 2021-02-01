@@ -21,6 +21,7 @@ group :development, :test do
   gem 'travis'
   gem 'factory_bot_rails'
   gem 'orderly'
+  gem 'capybara'
 end
 
 group :development do
