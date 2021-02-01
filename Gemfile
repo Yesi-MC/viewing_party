@@ -22,6 +22,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'orderly'
   gem 'capybara'
+  gem 'faker'
 end
 
 group :development do
