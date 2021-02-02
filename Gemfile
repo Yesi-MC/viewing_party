@@ -21,6 +21,14 @@ group :development, :test do
   gem 'travis'
   gem 'factory_bot_rails'
   gem 'orderly'
+  gem 'capybara'
+  gem 'faker'
+  gem 'launchy'
+  gem 'pry'
+  gem 'rspec-rails', '~> 4.0.1'
+  gem 'shoulda-matchers'
+  gem 'simplecov'
+  gem 'nyan-cat-formatter'
 end
 
 group :development do
