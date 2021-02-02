@@ -1,0 +1,16 @@
+require 'rails_helper'
+
+RSpec.describe WatchParty do
+  describe 'relationships' do
+    it { should belong_to :user }
+    it { should have_many :guests }
+    it { should have_many(:invitees).through(:guests) }
+  end
+  describe 'validations' do
+    it { should validate_presence_of :date }
+    it { should validate_presence_of :time }
+    it { should validate_presence_of :duration }
+    it { should validate_numericality_of :duration }
+    it { should validate_presence_of :movie_title }
+  end
+end
