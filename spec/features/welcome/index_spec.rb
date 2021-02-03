@@ -7,7 +7,7 @@ describe 'As a user when I visit the welcome page' do
     expect(page).to have_content('Welcome to the watch party')
     expect(page).to have_content('This is an application to explore movies')
     expect(page).to have_button('Log In')
-    expect(page).to have_button('Sign Up')
+    expect(page).to have_link('Sign Up')
     expect(page).to have_content('Email')
     expect(page).to have_content('Password')
   end
