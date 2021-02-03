@@ -18,6 +18,7 @@ gem 'bootsnap'
 gem 'jbuilder', '~> 2.5'
 gem 'bcrypt'
 gem 'bootstrap', '~> 4.6'
+gem 'jquery-rails'
 
 group :development, :test do
   gem 'pry'
