@@ -3,12 +3,14 @@ rbenv:
 - 2.5.3
 addons:
   postgresql: 9.6
+before_install:
+- gem install bundler
 script:
 - bundle exec rails db:{create,migrate} RAILS_ENV=test
 - bundle exec rspec
 deploy:
   provider: heroku
-  api_key: 
+  api_key:
     secure: ENV[movie_api_key]
   app:
   run: rails db:migrate
