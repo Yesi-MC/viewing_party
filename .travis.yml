@@ -12,5 +12,5 @@ deploy:
   provider: heroku
   api_key:
     secure: ENV[movie_api_key]
-  app:
+  app: fun-movie-night
   run: rails db:migrate
