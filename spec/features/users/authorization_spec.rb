@@ -11,13 +11,15 @@ describe 'User registration' do
 
       email = 'partyinthekitchen@exemple.com'
       password = 'hellyeah'
+      password_confirmation = 'hellyeah'
 
       fill_in 'user[email]', with: email
       fill_in 'user[password]', with: password
+      fill_in 'user[password_confirmation]', with: password
 
       click_button 'Create User'
 
-      expect(current_path).to eq(root_path)
+      expect(current_path).to eq(user_dashboard_path)
       expect(page).to have_content("Welcome, #{email}")
     end
   end
