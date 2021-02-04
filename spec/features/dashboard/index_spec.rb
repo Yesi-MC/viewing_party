@@ -14,6 +14,9 @@ RSpec.describe 'Dashboard Index' do
       within('section.friends-list') do
         expect(page).to have_content("Add friends to your friends list!")
       end
+      within('section.parties') do
+        expect(page).to have_content("No current parties going on. Would you like to start one?")
+      end
     end
   end
 end
