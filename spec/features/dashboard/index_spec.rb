@@ -11,10 +11,10 @@ RSpec.describe 'Dashboard Index' do
 
       expect(page).to have_content("Welcome #{@user.email}!")
       expect(page).to have_button("Discover Movies")
-      within('section.friends-list') do
+      within('section#friends-list') do
         expect(page).to have_content("Add friends to your friends list!")
       end
-      within('section.parties') do
+      within('section#parties') do
         expect(page).to have_content("No current parties going on. Would you like to start one?")
       end
     end
