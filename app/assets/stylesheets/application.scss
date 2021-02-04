@@ -13,7 +13,9 @@
  *= require_tree .
  *= require_self
  */
-
+ // Custom bootstrap variables must be set or imported *before* bootstrap.
+ @import "bootstrap";
+ 
 body {
   display: flex;
   min-height: 100vh;
