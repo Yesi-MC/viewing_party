@@ -19,7 +19,9 @@ describe 'User registration' do
 
       click_button 'Create User'
 
-      expect(current_path).to eq(user_dashboard_path)
+      user = User.first
+
+      expect(current_path).to eq(user_dashboard_index_path(user))
       expect(page).to have_content("Welcome, #{email}")
     end
   end
