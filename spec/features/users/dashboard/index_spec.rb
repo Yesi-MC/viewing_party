@@ -55,5 +55,23 @@ RSpec.describe 'Dashboard Index' do
         end
       end
     end
+    describe 'Sad Paths' do
+      it 'cannot add friends who are not in the database' do
+        visit login_path
+        email = "email@gmail.com"
+        password = "test"
+        user = User.create(email: email, password: password)
+        fill_in :email, with: email
+        fill_in :password, with: password
+        click_on "Log In"
+        friend_email = "friend@gmail.com"
+        
+        
+        fill_in :email, with: friend_email
+        click_on "Add Friend"
+
+        expect(page).to have_content("Person does not exist!")
+      end
+    end
   end
 end
