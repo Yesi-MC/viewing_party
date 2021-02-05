@@ -8,8 +8,9 @@ class FriendshipsController < ApplicationController
     if friend == nil
       flash[:error] = "Person does not exist!"
       redirect_to "/users/#{user.id}/dashboard"
+    else
+      Friendship.create!(user_id: user.id, friend_id: friend.id)
+      redirect_to "/users/#{user.id}/dashboard"
     end
-    Friendship.create!(user_id: user.id, friend_id: friend.id)
-    redirect_to "/users/#{user.id}/dashboard"
   end
 end
