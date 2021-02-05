@@ -41,4 +41,26 @@ describe 'User registration' do
       expect(current_path).to eq("/users/#{user.id}/dashboard")
     end
   end
+  describe 'sad path' do
+    it 'Blocks users from registering if email is invalid' do
+      visit root_path
+
+      click_link 'Sign Up'
+
+      expect(current_path).to eq(new_user_path)
+
+      email = 123
+      password = 'hellyeah'
+      password_confirmation = 'hellyeah'
+
+      fill_in 'user[email]', with: email
+      fill_in 'user[password]', with: password
+      fill_in 'user[password_confirmation]', with: password
+
+      click_button 'Create User'
+
+      expect(page).to have_content("Invalid credentials, please try again")
+      expect(current_path).to eq(new_user_path)
+    end
+  end
 end

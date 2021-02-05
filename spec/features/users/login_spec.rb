@@ -23,4 +23,23 @@ describe 'User login' do
       expect(page).to_not have_content("Log In")
     end
   end
+  describe 'sad path' do
+    it 'blocks login if credentials are bad' do
+      user = User.create(email: 'user@example.com', password: 'password')
+
+      visit root_path
+
+      click_link 'I have an account'
+
+      expect(current_path).to eq('/login')
+
+      fill_in :email, with: user.email.upcase
+      fill_in :password, with: 'wrongpassword'
+
+      click_button 'Log In'
+
+      expect(page).to have_content("Invalid credentials, please try again")
+      expect(current_path).to eq("/login")
+    end
+  end
 end
