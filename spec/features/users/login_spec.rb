@@ -7,12 +7,20 @@ describe 'User login' do
 
       visit root_path
 
-      fill_in :email, with: user.email
+      click_link 'I have an account'
+
+      expect(current_path).to eq('/login')
+
+      fill_in :email, with: user.email.upcase
       fill_in :password, with: user.password
 
       click_button 'Log In'
 
+      expect(current_path).to eq("/users/#{user.id}/dashboard")
       expect(page).to have_content("Welcome, #{user.email}")
+      expect(page).to have_content("Log Out")
+      expect(page).to_not have_content("Sign Up")
+      expect(page).to_not have_content("Log In")
     end
   end
 end
