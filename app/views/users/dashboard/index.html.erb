@@ -3,6 +3,11 @@
 
 <section id="friends">
   <p>You currently have no friends</p>
+  <%= form_tag friends_path(@user), method: :get do %>
+    <%= label_tag :email %>
+    <%= text_field_tag :email %>
+    <%= submit_tag "Add Friend"%>
+  <% end %>
 </section>
 
 <section id="viewing-parties">
