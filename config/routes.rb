@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get "/movies/:id", to: "movies#details" 
   
   get "/discover", to: "discover#index"
+
+ 
 end
 
 
