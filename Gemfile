@@ -19,6 +19,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt'
 gem 'bootstrap', '~> 4.6'
 gem 'jquery-rails'
+gem 'mini_racer'
 
 group :development, :test do
   gem 'pry'
