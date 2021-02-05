@@ -46,7 +46,8 @@ Watch party is an application in which users can explore movie options and creat
 
 ## Database Schema
 
-<img src="![Screen Shot 2021-02-05 at 4 41 17 PM](https://user-images.githubusercontent.com/69529052/107100258-07b41400-67d1-11eb-9606-2b14d214a841.png)">
+![Watch Party](https://github.com/nessaarruda/viewing_party/blob/readme/app/assets/images/Screen%20Shot%202021-02-05%20at%204.41.17%20PM.png)
+
 
 ## Authors
 
