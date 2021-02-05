@@ -42,4 +42,20 @@ describe 'User login' do
       expect(current_path).to eq("/login")
     end
   end
+  describe 'logged in user can logout' do
+    it 'allows user to log out' do
+      user = User.create(email: 'admin@gmail.com', password: 'password')
+
+      visit '/login'
+
+      fill_in :email, with: user.email.upcase
+      fill_in :password, with: 'password'
+
+      click_button 'Log In'
+
+      click_link 'Log Out'
+
+      expect(current_path).to eq(root_path)
+    end
+  end
 end
