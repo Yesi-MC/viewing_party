@@ -1,1 +1,11 @@
 <%= link_to 'Log Out', '/logout' %>
+<%= button_to 'Discover Movies', discover_index_path, method: :get %>
+
+<section id="friends">
+  <p>You currently have no friends</p>
+</section>
+
+<section id="viewing-parties">
+  <p>Feeling like partying?</p>
+  <%= link_to "Click here to start a party!" %>
+</section>
