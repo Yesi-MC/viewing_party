@@ -1,8 +1,8 @@
 # Watch Party
 
-![rails-badge](![readmeimage](https://user-images.githubusercontent.com/69529052/107099426-df2b1a80-67ce-11eb-92d8-3a4071a067d1.jpeg))
+<img src="![Screen Shot 2021-02-05 at 4 41 17 PM]('app/images/readmeimage.jpg')">
 
-Watch party is an application in which users can explore movie options and create a viewing party event for the user and friends.
+Watch party is an application in which users can explore movie options and create a viewing party event for them and friends.
 
 
 ## Readme Content
