@@ -11,6 +11,6 @@
 
 <% @movies.each do |movie| %>
 
-  <h5> Movie Tittle: <%= link_to movie[:title], "/movies/#{movie[:id]}" %> </h5>
-  <h5> Voter Average: <%= movie[:vote_average] %> </h5></br>
+  <h5> Movie Tittle: <%= link_to movie.title, "/movies/#{movie.id}" %> </h5>
+  <h5> Voter Average: <%= movie.vote_average %> </h5></br>
 <% end %></br>
