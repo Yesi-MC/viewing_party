@@ -16,6 +16,8 @@ RSpec.describe 'Dashboard Index' do
         within('section#friends') do
           # User currently has no friends
           expect(page).to have_content("You currently have no friends")
+          expect(page).to have_button("Add Friend")
+          expect(page).to have_field(:email)
         end
         within('section#viewing-parties') do
           expect(page).to have_content("Feeling like partying?")
