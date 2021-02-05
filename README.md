@@ -1,6 +1,6 @@
 # Watch Party
 
-<img src="![Screen Shot 2021-02-05 at 4 41 17 PM]('app/images/readmeimage.jpg')">
+![Watch Party](https://github.com/nessaarruda/viewing_party/blob/readme/app/assets/images/readmeimage.jpeg)
 
 Watch party is an application in which users can explore movie options and create a viewing party event for them and friends.
 
