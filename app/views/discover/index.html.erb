@@ -1,1 +1,17 @@
+
 <h1>Discover Movies</h1>
+<img src='https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/summer-movies-1587392939.jpg?crop=1.00xw:1.00xh;0,0&resize=768:*' class="img-fluid" alt="...">
+
+<center><h1>Welcome (persons name)</h1></center>
+
+
+<center><%= link_to "Find Top Rated Movies", movies_path %></center>
+<p><center> or <center> </p>
+
+
+  <%= form_tag movies_search_path, method: :get do %>
+      <h3>Find Movies:</h3>
+      <%= text_field_tag :movie %>
+      <%= submit_tag "Search" %>
+  <% end %>
+

@@ -1,22 +1,46 @@
-<%= link_to 'Log Out', '/logout' %>
-<%= button_to 'Discover Movies', discover_index_path, method: :get %>
+<nav class='navbar navbar-expand-lg navbar-dark bg-dark'>
+  <a class='navbar-brand' href='#'>Dashboard</a>
+  <p><%= link_to 'Log Out', '/logout' %></p>
+</nav>
 
-<section id="friends">
-  <%= form_tag friends_path(@user), method: :post do %>
-    <%= label_tag :email %>
-    <%= text_field_tag :email %>
-    <%= submit_tag "Add Friend"%>
-  <% end %>
-  <% if @friends.empty? %>
-    <p>You currently have no friends</p>
-  <% else %>
-    <% @friends.each do |friend| %>
+<div class='jumbotron jumbotron-fluid'>
+  <div class='container'>
+
+    <h1 class='display-4'>Ready to have some fun?!</h1>
+    <p class='lead'>Here you can add friends, discover movies and start a party! </p>
+  </div>
+</div>
+
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Friends</h5>
+    <p class="card-text"></p>
+    <section id="friends">
+      <% if @friends.empty? %>
+      <p>You currently have no friends</p>
+      <% else %>
+      <% @friends.each do |friend| %>
       <p> <%= friend.email %> </p>
-    <% end %>
-  <% end %>
-</section>
+      <% end %>
+      <% end %>
+      <%= form_tag friends_path(@user), method: :post do %>
+      <%= label_tag :email, 'Friend Email' %>
+      <%= text_field_tag :email %>
+      <%= submit_tag "Add Friend"%>
+      <% end %>
+    </section>
+  </div>
+</div>
 
+<br/>
 <section id="viewing-parties">
-  <p>Feeling like partying?</p>
-  <%= link_to "Click here to start a party!" %>
+<br/>
+
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Feeling like partying?</h5>
+    <p><%= link_to "Click here to start a party!" %></p>
+  </div>
+</div>
 </section>
+<p><%= button_to 'Discover Movies', discover_index_path, method: :get %></p>

@@ -9,18 +9,18 @@ describe 'User login' do
 
       click_link 'I have an account'
 
-      expect(current_path).to eq('/login')
+      expect(current_path).to eq(login_path)
 
       fill_in :email, with: user.email.upcase
       fill_in :password, with: user.password
 
       click_button 'Log In'
 
-      expect(current_path).to eq("/users/#{user.id}/dashboard")
+      expect(current_path).to eq(dashboard_path(user))
       expect(page).to have_content("Welcome, #{user.email}")
-      expect(page).to have_content("Log Out")
-      expect(page).to_not have_content("Sign Up")
-      expect(page).to_not have_content("Log In")
+      expect(page).to have_content('Log Out')
+      expect(page).to_not have_content('Sign Up')
+      expect(page).to_not have_content('Log In')
     end
   end
   describe 'sad path' do
@@ -31,22 +31,22 @@ describe 'User login' do
 
       click_link 'I have an account'
 
-      expect(current_path).to eq('/login')
+      expect(current_path).to eq(login_path)
 
       fill_in :email, with: user.email.upcase
       fill_in :password, with: 'wrongpassword'
 
       click_button 'Log In'
 
-      expect(page).to have_content("Invalid credentials, please try again")
-      expect(current_path).to eq("/login")
+      expect(page).to have_content('Invalid credentials, please try again')
+      expect(current_path).to eq(login_path)
     end
   end
   describe 'logged in user can logout' do
     it 'allows user to log out' do
       user = User.create(email: 'admin@gmail.com', password: 'password')
 
-      visit '/login'
+      visit login_path
 
       fill_in :email, with: user.email.upcase
       fill_in :password, with: 'password'
