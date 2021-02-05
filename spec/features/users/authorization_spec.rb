@@ -9,7 +9,7 @@ describe 'User registration' do
 
       expect(current_path).to eq(new_user_path)
 
-      email = 'partyinthekitchen@exemple.com'
+      email = 'partyinthekitchen@gmail.com'
       password = 'hellyeah'
       password_confirmation = 'hellyeah'
 
