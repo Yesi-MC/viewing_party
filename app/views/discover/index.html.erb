@@ -1,0 +1,13 @@
+<center><h1>Welcome (persons name)</h1></center>
+
+
+<center><%= link_to "Find Top Rated Movies", movies_path %></center>
+<p><center> or <center> </p>
+
+
+  <%= form_tag movies_search_path, method: :get do %>
+      <h3>Find Movies:</h3>
+      <%= text_field_tag :movie %>
+      <%= submit_tag "Search" %>
+  <% end %>
+
