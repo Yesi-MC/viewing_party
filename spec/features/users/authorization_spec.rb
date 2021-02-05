@@ -21,7 +21,7 @@ describe 'User registration' do
 
       user = User.first
 
-      expect(current_path).to eq("/users/#{user.id}/dashboard")
+      expect(current_path).to eq(dashboard_path(user))
       expect(page).to have_content("Welcome, #{email}")
     end
     it 'It redirect users that are logged in to the dashboard' do
@@ -38,7 +38,7 @@ describe 'User registration' do
 
       visit root_path
 
-      expect(current_path).to eq("/users/#{user.id}/dashboard")
+      expect(current_path).to eq(dashboard_path(user))
     end
   end
   describe 'sad path' do
@@ -59,7 +59,7 @@ describe 'User registration' do
 
       click_button 'Create User'
 
-      expect(page).to have_content("Invalid credentials, please try again")
+      expect(page).to have_content('Invalid credentials, please try again')
       expect(current_path).to eq(new_user_path)
     end
   end

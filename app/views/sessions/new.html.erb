@@ -1,7 +1,16 @@
 <%= form_with url: '/login', local: true do |f| %>
+<div class="form-group">
     <%= f.label :email, 'Email' %>
     <%= f.email_field :email %>
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    <div class="form-group">
     <%= f.label :password, 'Password' %>
     <%= f.password_field :password %>
     <%= f.submit 'Log In' %>
+    <div class="form-group form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Keep me logged in</label>
+    </div>
 <% end %>
+</div>
+</div>

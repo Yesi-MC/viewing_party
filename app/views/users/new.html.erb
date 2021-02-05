@@ -1,9 +1,14 @@
 <%= form_with model: @user, local: true do |f| %>
+<div class="form-group">
   <%= f.label :email, 'Email' %>
   <%= f.email_field :email %>
+  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  <div class="form-group">
   <%= f.label :password, 'Password' %>
-  <%= f.password_field :password %>
+  <%= f.password_field :password %><br/>
   <%= f.label :password_confirmation, 'Confirm Password' %>
   <%= f.password_field :password_confirmation %>
   <%= f.submit 'Create User' %>
 <% end %>
+</div>
+</div>
