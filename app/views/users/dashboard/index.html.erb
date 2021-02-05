@@ -2,11 +2,17 @@
 <%= button_to 'Discover Movies', discover_index_path, method: :get %>
 
 <section id="friends">
-  <p>You currently have no friends</p>
-  <%= form_tag friends_path(@user), method: :get do %>
+  <%= form_tag friends_path(@user), method: :post do %>
     <%= label_tag :email %>
     <%= text_field_tag :email %>
     <%= submit_tag "Add Friend"%>
+  <% end %>
+  <% if @friends.empty? %>
+    <p>You currently have no friends</p>
+  <% else %>
+    <% @friends.each do |friend| %>
+      <p> <%= friend.email %> </p>
+    <% end %>
   <% end %>
 </section>
 
