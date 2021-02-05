@@ -1,0 +1,13 @@
+<h2> Welcome </h2>
+
+<h1><%= @movie[:title] %></h1>
+<h3><%= @movie[:vote_average] %></h3>
+<h3><%= @movie[:runtime] %></h3>
+
+<% abc = @movie[:genres].map { |genre| genre[:name] } %>
+  <%= abc.join(", ") %>
+
+
+
+<center><%= button_to 'Create a Viewing Party for Movie' %></center>
+
