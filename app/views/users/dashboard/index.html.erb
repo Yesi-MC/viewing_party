@@ -1,0 +1,22 @@
+<%= link_to 'Log Out', '/logout' %>
+<%= button_to 'Discover Movies', discover_index_path, method: :get %>
+
+<section id="friends">
+  <%= form_tag friends_path(@user), method: :post do %>
+    <%= label_tag :email %>
+    <%= text_field_tag :email %>
+    <%= submit_tag "Add Friend"%>
+  <% end %>
+  <% if @friends.empty? %>
+    <p>You currently have no friends</p>
+  <% else %>
+    <% @friends.each do |friend| %>
+      <p> <%= friend.email %> </p>
+    <% end %>
+  <% end %>
+</section>
+
+<section id="viewing-parties">
+  <p>Feeling like partying?</p>
+  <%= link_to "Click here to start a party!" %>
+</section>

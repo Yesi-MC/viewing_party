@@ -1,5 +1,4 @@
-class DiscoverController < ApplicationController 
-  def index 
-
+class DiscoverController < ApplicationController
+  def index
   end
 end

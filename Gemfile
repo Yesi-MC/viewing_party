@@ -14,9 +14,11 @@ gem 'puma', '~> 3.7'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
-gem 'bootsnap'
+gem 'bootsnap', '>= 1.1.0', require: false
 gem 'jbuilder', '~> 2.5'
 gem 'bcrypt'
+gem 'bootstrap', '~> 4.6'
+gem 'jquery-rails'
 
 group :development, :test do
   gem 'pry'
@@ -28,6 +30,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'simplecov'
   gem 'nyan-cat-formatter'
+  gem 'email_address'
 end
 
 group :development do
@@ -39,7 +42,6 @@ end
 group :test do
   gem 'rspec-rails'
   gem 'launchy'
-  gem 'simplecov'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
