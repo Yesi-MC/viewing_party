@@ -30,6 +30,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'simplecov'
   gem 'nyan-cat-formatter'
+  gem 'email_address'
 end
 
 group :development do
