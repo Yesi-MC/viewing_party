@@ -21,7 +21,7 @@ describe 'User registration' do
 
       user = User.first
 
-      expect(current_path).to eq(user_dashboard_index_path(user))
+      expect(current_path).to eq("/users/#{user.id}/dashboard")
       expect(page).to have_content("Welcome, #{email}")
     end
   end
