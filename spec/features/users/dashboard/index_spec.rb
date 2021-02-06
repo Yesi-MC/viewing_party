@@ -72,6 +72,24 @@ RSpec.describe 'Dashboard Index' do
 
         expect(page).to have_content('Person does not exist!')
       end
+      it 'cannot add friends who already is the users friend' do
+        visit login_path
+        email = 'email@gmail.com'
+        password = 'test'
+        user = User.create(email: email, password: password)
+        fill_in :email, with: email
+        fill_in :password, with: password
+        click_on 'Log In'
+
+        friend_email = 'friend@gmail.com'
+        friend = User.create(email: friend_email, password: password)
+        Friendship.create(user_id: user.id, friend_id: friend.id)
+
+        fill_in :email, with: friend_email
+        click_on 'Add Friend'
+
+        expect(page).to have_content('Friend already exists')
+      end
     end
   end
 end
