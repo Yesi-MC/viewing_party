@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
-  root 'welcome#index'
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root "welcome#index"
 
+  get "/movies", to: "movies#index"
+  get "/movies/search", to: "movies#search"
+  get "/movies/:id", to: "movies#details" 
+  
   resources :users, only: [:new, :create]
   resources :discover, only: [:index]
 
@@ -12,3 +17,10 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
 end
+
+
+
+
+
+
+
