@@ -21,6 +21,7 @@ gem 'bcrypt'
 gem 'bootstrap', '~> 4.6'
 gem 'jquery-rails'
 gem 'mini_racer'
+gem 'email_address'
 
 group :development, :test do
   gem 'pry'
@@ -32,7 +33,6 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'simplecov'
   gem 'nyan-cat-formatter'
-  gem 'email_address'
 end
 
 group :development do
