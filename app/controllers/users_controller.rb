@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   def new
     @user = User.new
   end
@@ -12,7 +11,7 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome, #{new_user.email}"
       redirect_to "/users/#{new_user.id}/dashboard"
     else
-      flash[:error] = "Invalid credentials, please try again."
+      flash[:error] = 'Invalid credentials, please try again.'
       redirect_to new_user_path
     end
   end
