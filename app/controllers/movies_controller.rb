@@ -7,6 +7,7 @@ class MoviesController < ApplicationController
     # data = JSON.parse(response.body, symbolize_names: true )
     # data2 = JSON.parse(response2.body, symbolize_names: true )
     # @movies = data[:results].concat(data2[:results])
+  
     @movies = MovieFacade.call_api_for_all_top_rated_movies 
   end
 
