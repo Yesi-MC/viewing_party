@@ -38,5 +38,24 @@ RSpec.describe MovieService do
         expect(first_result[:vote_average]).to be_a(Float)
       end
     end
+    it 'can show movie details' do
+      VCR.use_cassette('movie_details') do
+        movie = MovieService.movie_details(100)
+
+        expect(movie).to be_a(Hash)
+
+        expect(movie).to have_key(:genres)
+        expect(movie[:genres]).to be_a(Array)
+
+        expect(movie).to have_key(:original_title)
+        expect(movie[:original_title]).to be_a(String)
+
+        expect(movie).to have_key(:release_date)
+        expect(movie[:release_date]).to be_a(String)
+
+        expect(movie).to have_key(:vote_average)
+        expect(movie[:vote_average]).to be_a(Float)
+      end
+    end
   end
 end
