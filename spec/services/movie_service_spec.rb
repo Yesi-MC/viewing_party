@@ -73,5 +73,21 @@ RSpec.describe MovieService do
         expect(cast.first[:character]).to be_a(String)
       end
     end
+    it 'returns movie review' do
+      VCR.use_cassette('movie_reviews') do
+        reviews = MovieService.movie_reviews(100)
+
+        expect(reviews).to be_a(Array)
+
+        expect(reviews.first).to have_key(:author)
+        expect(reviews.first[:author]).to be_a(String)
+
+        expect(reviews.first).to have_key(:content)
+        expect(reviews.first[:content]).to be_a(String)
+
+        expect(reviews.first).to have_key(:author_details)
+        expect(reviews.first[:author_details]).to be_a(Hash)
+      end
+    end
   end
 end
