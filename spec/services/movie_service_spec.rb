@@ -57,5 +57,21 @@ RSpec.describe MovieService do
         expect(movie[:vote_average]).to be_a(Float)
       end
     end
+    it 'returns movie cast' do
+      VCR.use_cassette('movie_cast') do
+        cast = MovieService.movie_cast(100)
+
+        expect(cast).to be_a(Array)
+
+        expect(cast.first).to have_key(:gender)
+        expect(cast.first[:gender]).to be_a(Integer)
+
+        expect(cast.first).to have_key(:name)
+        expect(cast.first[:name]).to be_a(String)
+
+        expect(cast.first).to have_key(:character)
+        expect(cast.first[:character]).to be_a(String)
+      end
+    end
   end
 end

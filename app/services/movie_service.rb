@@ -26,13 +26,13 @@ class MovieService
 
     def movie_cast(movie_id)
       response = conn.get("/3/movie/#{movie_id}/credits?api_key=#{ENV['movie_api_key']}")
-      data = JSON.parse(response2.body, symbolize_names: true )
+      data = JSON.parse(response.body, symbolize_names: true )
       @actors = data[:cast][0..9]
     end
 
     def movie_reviews(movie_id)
       response = conn.get("/3/movie/#{movie_id}/reviews?api_key=#{ENV['movie_api_key']}")
-      data_review = JSON.parse(response3.body, symbolize_names: true )
+      data_review = JSON.parse(response.body, symbolize_names: true )
       @reviews = data_review[:results]
     end
   end
