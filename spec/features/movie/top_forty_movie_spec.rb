@@ -1,6 +1,4 @@
 require 'rails_helper'
-# require 'webmock/rspec'
-# WebMock.enable!
 
 RSpec.describe 'API Connection' do
   describe 'happy path' do
@@ -22,7 +20,7 @@ RSpec.describe 'API Connection' do
         expect(page).to have_content("Gabriel's Inferno Part III")
         expect(page).to have_content("Your Name.")
         expect(page).to have_content("City of God")
-      end 
+      end
     end 
   end 
 end
