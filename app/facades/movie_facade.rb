@@ -1,45 +1,44 @@
-class MovieFacade 
+class MovieFacade
+  class << self
+    def call_api_for_all_top_rated_movies
+      # conn = Faraday.new("https://api.themoviedb.org") # the connection is the URL
+      # response = conn.get("/3/movie/top_rated?api_key=#{ENV['movie_api_key']}") # this is the URI
+      # response2 = conn.get("/3/movie/top_rated?api_key=#{ENV['movie_api_key']}&page=2") # this is the URI
+      # data = JSON.parse(response.body, symbolize_names: true )
+      # data2 = JSON.parse(response2.body, symbolize_names: true )
+      # data[:results].concat(data2[:results])
 
-  def self.call_api_for_all_top_rated_movies 
-    # conn = Faraday.new("https://api.themoviedb.org") #the connection is the URL
-    # response = conn.get("/3/movie/top_rated?api_key=#{ENV['movie_api_key']}") #this is the URI
-    # response2 = conn.get("/3/movie/top_rated?api_key=#{ENV['movie_api_key']}&page=2") #this is the URI
-    # data = JSON.parse(response.body, symbolize_names: true )
-    # data2 = JSON.parse(response2.body, symbolize_names: true )
-    # data[:results].concat(data2[:results])
+      # do the facade first then refactor into the service
+      # after service is existing then do the following below
 
+      data = MovieService.top_rated_movies
+      data.map { |movie| Movie.new(movie) }
 
-    #do the facade first then refactor into the service 
-    #after service is existing then do the following below 
+      # iterating through will turn each movie hash into an object and it will contain
+      # only the attributes we turned into methods in the poros
+    end
 
-    data = MovieService.top_rated_movies
-    data.map { |movie| Movie.new(movie) }
+    def search_movie(movie_search)
+      data = MovieService.search_movie(movie_search)
+      data.map { |movie| Movie.new(movie) }
+    end
 
-    # iterating through will turn each movie hash into an object and it will contain 
-    # only the attributes we turned into methods in the poros
-  end
+    def api_movie_details(movie_id)
+      # conn = Faraday.new("https://api.themoviedb.org")
+      # response = conn.get("/3/movie/#{movie_id}?api_key=#{ENV['movie_api_key']}")
+      # @movie = JSON.parse(response.body, symbolize_names: true )
 
-  def self.search_movie(movie_search) 
-    data = MovieService.search_movie(movie_search)
-    data.map { |movie| Movie.new(movie) } 
-  end
+      # response2 = conn.get("/3/movie/#{movie_id}/credits?api_key=#{ENV['movie_api_key']}")
+      # data = JSON.parse(response2.body, symbolize_names: true )
+      # @actors = data[:cast][0..9]
 
-  def self.api_movie_details(movie_id)
-   
-    # conn = Faraday.new("https://api.themoviedb.org")
-    # response = conn.get("/3/movie/#{movie_id}?api_key=#{ENV['movie_api_key']}") 
-    # @movie = JSON.parse(response.body, symbolize_names: true )
+      # response3 = conn.get("/3/movie/#{movie_id}/reviews?api_key=#{ENV['movie_api_key']}")
+      # data_review = JSON.parse(response3.body, symbolize_names: true )
+      # @reviews = data_review[:results]
 
-    # response2 = conn.get("/3/movie/#{movie_id}/credits?api_key=#{ENV['movie_api_key']}") 
-    # data = JSON.parse(response2.body, symbolize_names: true )
-    # @actors = data[:cast][0..9]
-
-    # response3 = conn.get("/3/movie/#{movie_id}/reviews?api_key=#{ENV['movie_api_key']}") 
-    # data_review = JSON.parse(response3.body, symbolize_names: true )
-    # @reviews = data_review[:results]
-
-    data = MovieService.movie_details(movie_id)
-    # require 'pry'; binding.pry
-    Movie.new(data) 
+      data = MovieService.movie_details(movie_id)
+      # require 'pry'; binding.pry
+      Movie.new(data)
+    end
   end
 end
