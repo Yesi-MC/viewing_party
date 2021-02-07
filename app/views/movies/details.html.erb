@@ -1,13 +1,29 @@
-<h2> Welcome </h2>
-
-<h1><%= @movie[:title] %></h1>
-<h3><%= @movie[:vote_average] %></h3>
-<h3><%= @movie[:runtime] %></h3>
-
-<% abc = @movie[:genres].map { |genre| genre[:name] } %>
-  <%= abc.join(", ") %>
-
-
+<h2> Welcome (person name) </h2>
 
 <center><%= button_to 'Create a Viewing Party for Movie' %></center>
+
+<h1>Movie Title: <%= @movie[:title] %></h1>
+<h3> Movie Vote Average: <%= @movie[:vote_average] %></h3>
+<h3>Movie run time: <%= @movie[:runtime] %></h3>
+
+<% movie_genre = @movie[:genres].map { |genre| genre[:name] } %>
+  <h3>Genres: <%= movie_genre.join(", ") %></h3></br>
+
+<p> Movie Summary: <%= @movie[:overview] %></p></br>
+
+<p> Cast: <% @actors.each do |actor| %></p>
+  <p> <%= actor[:name] %> as <%= actor[:character] %><p> 
+<% end %></br>
+
+<h3> <%=  @reviews.count %> Review(s)</h3></br>
+<p><% @reviews.each do |review| %></p>
+  <p>Author: <%= review[:author] %><p> 
+  <p> <%= review[:content] %><p> 
+<% end %></br>
+
+
+
+
+
+
 
