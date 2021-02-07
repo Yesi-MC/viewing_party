@@ -8,7 +8,38 @@ class MovieFacade
     # data2 = JSON.parse(response2.body, symbolize_names: true )
     # data[:results].concat(data2[:results])
 
+
+    #do the facade first then refactor into the service 
+    #after service is existing then do the following below 
+
     data = MovieService.top_rated_movies
     data.map { |movie| Movie.new(movie) }
+
+    # iterating through will turn each movie hash into an object and it will contain 
+    # only the attributes we turned into methods in the poros
+  end
+
+  def self.search_movie(movie_search) 
+    data = MovieService.search_movie(movie_search)
+    data.map { |movie| Movie.new(movie) } 
+  end
+
+  def self.api_movie_details(movie_id)
+   
+    # conn = Faraday.new("https://api.themoviedb.org")
+    # response = conn.get("/3/movie/#{movie_id}?api_key=#{ENV['movie_api_key']}") 
+    # @movie = JSON.parse(response.body, symbolize_names: true )
+
+    # response2 = conn.get("/3/movie/#{movie_id}/credits?api_key=#{ENV['movie_api_key']}") 
+    # data = JSON.parse(response2.body, symbolize_names: true )
+    # @actors = data[:cast][0..9]
+
+    # response3 = conn.get("/3/movie/#{movie_id}/reviews?api_key=#{ENV['movie_api_key']}") 
+    # data_review = JSON.parse(response3.body, symbolize_names: true )
+    # @reviews = data_review[:results]
+
+    data = MovieService.movie_details(movie_id)
+    # require 'pry'; binding.pry
+    Movie.new(data) 
   end
 end

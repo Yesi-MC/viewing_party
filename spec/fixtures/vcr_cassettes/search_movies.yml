@@ -1,0 +1,108 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.themoviedb.org/3/search/movie?api_key=DONT_EXPOSE_MY_DATA&query=Untitled%20Spy%20Kids%20Reboot
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.3.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Date:
+      - Sun, 07 Feb 2021 20:36:12 GMT
+      Server:
+      - openresty
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, HEAD, POST, PUT, DELETE, OPTIONS
+      Access-Control-Expose-Headers:
+      - ETag, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, Retry-After,
+        Content-Length, Content-Range
+      Cache-Control:
+      - public, max-age=600
+      Vary:
+      - Accept-Encoding
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 41a1988bf0eebd2eb412a5ab1f1f394e.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - SFO5-C3
+      X-Amz-Cf-Id:
+      - UrVoa0cWXaHaGdG7vWKflcuMG3n3YsKAp_AYs5rwd-bKzF9kuuWBAg==
+    body:
+      encoding: ASCII-8BIT
+      string: '{"page":1,"results":[{"adult":false,"backdrop_path":null,"genre_ids":[10751,12,28],"id":790493,"original_language":"en","original_title":"Untitled
+        Spy Kids Reboot","overview":"A reboot of the family franchise centred around
+        a multi-cultural family of spies.","popularity":1.285,"poster_path":null,"release_date":"","title":"Untitled
+        Spy Kids Reboot","video":false,"vote_average":0,"vote_count":0}],"total_pages":1,"total_results":1}'
+  recorded_at: Sun, 07 Feb 2021 20:36:12 GMT
+- request:
+    method: get
+    uri: https://api.themoviedb.org/3/search/movie?api_key=DONT_EXPOSE_MY_DATA&page=2&query=Untitled%20Spy%20Kids%20Reboot
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.3.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '57'
+      Connection:
+      - keep-alive
+      Date:
+      - Sun, 07 Feb 2021 20:36:12 GMT
+      Server:
+      - openresty
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, HEAD, POST, PUT, DELETE, OPTIONS
+      Access-Control-Expose-Headers:
+      - ETag, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, Retry-After,
+        Content-Length, Content-Range
+      Etag:
+      - ad2f664d2b0a17a0d4395bc0df03aaf3
+      Cache-Control:
+      - public, max-age=600
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 9e2f847ffc5e44974bd7f01a7603f72d.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - SFO5-C3
+      X-Amz-Cf-Id:
+      - dgj8djHiat3YdMT0eOQ0b10VuWuQDAEDJ9s__jjebn6XdDBl5RHJUg==
+    body:
+      encoding: UTF-8
+      string: '{"page":2,"results":[],"total_pages":1,"total_results":1}'
+  recorded_at: Sun, 07 Feb 2021 20:36:12 GMT
+recorded_with: VCR 6.0.0
