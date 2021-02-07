@@ -13,7 +13,17 @@ RSpec.describe MovieFacade do
 
         #facade we dont test for methods or keys or keys to the big hash because 
         #we already tested that in the service and the poro 
-      end 
-    end 
+      end
+    end
+    it 'can search for a specific movie' do
+      VCR.use_cassette("search_movies") do
+        data = MovieFacade.search_movie("Untitled%20Spy%20Kids%20Reboot")
+
+        expect(data).to be_a(Array)
+        expect(data.count).to eq(1)
+        expect(data.first).to be_a(Movie)
+        
+      end
+    end
   end 
 end 
