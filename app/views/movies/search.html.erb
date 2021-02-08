@@ -7,13 +7,16 @@
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
       <%= form_tag movies_search_path, method: :get do %>
+     
       <h2>Find Movies:</h2>
         <%= text_field_tag :movie %>
         <%= submit_tag "Search" %>
         <% end %><br/>
+  
         <h1 class="display-4"><h1><%= @movies.count %> Search Results<h1></h1>
     </div>
   </div>
+
 
 <% @movies.each do |movie| %>
 <ul>

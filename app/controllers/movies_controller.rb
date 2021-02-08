@@ -1,5 +1,6 @@
 class MoviesController < ApplicationController
   def index
+    # require 'pry'; binding.pry
     # (top rated) will go to the index views
     # conn = Faraday.new("https://api.themoviedb.org") #the connection is the URL
     # response = conn.get("/3/movie/top_rated?api_key=#{ENV['movie_api_key']}") #this is the URI
@@ -12,13 +13,13 @@ class MoviesController < ApplicationController
   end
 
   def search
-    movie_search = params[:movie]
-    # # response2 = conn.get("/3/search/movie") do |req| #this is the same as the response2
-    # #   req.params['api_key'] = ENV['movie_api_key']
-    # #   req.params['query'] = movie_search
-    # #   req.params['page'] = 2
-    # # end
-    @movies = MovieFacade.search_movie(movie_search)
+    if params[:movie] == ""
+      flash[:notice] = "Please Enter a Movie Titles"
+      redirect_to movies_search_path
+    else
+      movie_search = params[:movie]
+      @movies = MovieFacade.search_movie(movie_search)
+    end 
   end
 
   def details
