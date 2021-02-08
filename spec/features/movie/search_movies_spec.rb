@@ -9,14 +9,16 @@ RSpec.describe 'API Connection' do
 
         visit discover_index_path
         fill_in "movie", with: "Untitled Spy Kids Reboot"
-
+       
         click_button "Search"
+
     
         expect(current_path).to eq(movies_search_path)
         expect(page).to have_content("Untitled Spy Kids Reboot")
         expect(page).to have_content("Voter Average: 0")
       end
     end
+    describe 'search for nonexistent' do 
     it 'can search for a nonexistent movie and show 0 results' do
       VCR.use_cassette("non_existent_movies") do
     
@@ -32,6 +34,26 @@ RSpec.describe 'API Connection' do
         expect(page).to have_content("0 Search Results")
         expect(page).not_to have_content(not_a_movie)
       end
+    end
+  end 
+end
+  describe 'sad path' do 
+      it 'can search for a nonexistent movie and show 0 results' do
+      VCR.use_cassette("400 status") do
+    
+        user = User.create(email: 'user@example.com', password: 'password')
+
+        visit discover_index_path
+
+   
+        fill_in "movie", with: ""
+
+        
+        click_button "Search"
+      
+        expect(page).to have_content("Please Enter a Movie Title")
+        expect(current_path).to eq(discover_index_path)
+      end 
     end
   end
 end

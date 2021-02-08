@@ -1,29 +1,34 @@
 class MoviesController < ApplicationController
   def index
+
+
+    # Top 40 movies API 
     # (top rated) will go to the index views
-    # conn = Faraday.new("https://api.themoviedb.org") #the connection is the URL
-    # response = conn.get("/3/movie/top_rated?api_key=#{ENV['movie_api_key']}") #this is the URI
+    # conn = Faraday.new("https://api.themoviedb.org") #the connection is the URL (303)
+    # response = conn.get("/3/movie/top_rated?api_key=#{ENV['movie_api_key_for_fun']}") #this is the URI (123-45678)
     # response2 = conn.get("/3/movie/top_rated?api_key=#{ENV['movie_api_key']}&page=2") #this is the URI
     # data = JSON.parse(response.body, symbolize_names: true )
     # data2 = JSON.parse(response2.body, symbolize_names: true )
     # @movies = data[:results].concat(data2[:results])
+    # require 'pry'; binding.pry
+
 
     @movies = MovieFacade.call_api_for_all_top_rated_movies
   end
 
   def search
     movie_search = params[:movie]
-    # # response2 = conn.get("/3/search/movie") do |req| #this is the same as the response2
-    # #   req.params['api_key'] = ENV['movie_api_key']
-    # #   req.params['query'] = movie_search
-    # #   req.params['page'] = 2
-    # # end
-    @movies = MovieFacade.search_movie(movie_search)
+    if movie_search == ""
+      flash[:notice] = "Please Enter a Movie Title"
+      redirect_to discover_index_path
+    else 
+      @movies = MovieFacade.search_movie(movie_search)
+    end 
   end
-
 
   def details 
     @movie_details = MovieFacade.api_movie_details(params[:id])
+
     # conn = Faraday.new("https://api.themoviedb.org")
     # response = conn.get("/3/movie/#{movie_id}?api_key=#{ENV['movie_api_key']}")
     # @movie = JSON.parse(response.body, symbolize_names: true )

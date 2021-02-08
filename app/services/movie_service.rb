@@ -36,6 +36,7 @@ class MovieService
       @reviews = data_review[:results][0..3]
     end
   end
+
   private
 
   def self.conn
