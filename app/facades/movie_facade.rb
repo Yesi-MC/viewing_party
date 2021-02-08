@@ -38,8 +38,9 @@ class MovieFacade
     # data_review = JSON.parse(response3.body, symbolize_names: true )
     # @reviews = data_review[:results]
 
-    data = MovieService.movie_details(movie_id)
-    # require 'pry'; binding.pry
-    Movie.new(data) 
+    movie_data = MovieService.movie_details(movie_id)
+    actor_data = MovieService.movie_cast(movie_id)
+    review_data = MovieService.movie_reviews(movie_id)
+    MovieDetails.new(movie_data, actor_data, review_data)
   end
 end
