@@ -11,7 +11,6 @@ class MovieDetails
               :review_contents
 
   def initialize(movie_data, actor_data, review_data)
-    
     @id = movie_data[:id]
     @title = movie_data[:title]
     @vote_average = movie_data[:vote_average]
