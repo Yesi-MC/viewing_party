@@ -33,7 +33,7 @@ class MovieService
     def movie_reviews(movie_id)
       response = conn.get("/3/movie/#{movie_id}/reviews?api_key=#{ENV['movie_api_key']}")
       data_review = JSON.parse(response.body, symbolize_names: true )
-      @reviews = data_review[:results]
+      @reviews = data_review[:results][0..3]
     end
   end
 
