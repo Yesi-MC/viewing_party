@@ -5,10 +5,12 @@ class MovieDetails
               :genres,
               :overview,
               :runtime,
-              :actor_names, 
-              :characters,
-              :review_authors,
-              :review_contents
+              :actors,
+              #:actor_names, 
+              #:characters,
+              :reviews
+              # :review_authors,
+              # :review_contents
 
   def initialize(movie_data, actor_data, review_data)
     @id = movie_data[:id]
@@ -17,9 +19,21 @@ class MovieDetails
     @genres = movie_data[:genres].map { |genre| genre[:name]} 
     @overview = movie_data[:overview]
     @runtime = movie_data[:runtime]
-    @actor_names = actor_data.map { |actor| actor[:name] }
-    @characters = actor_data.map { |actor| actor[:character] }
-    @review_authors = review_data.map { |review| review[:author] }
-    @review_contents = review_data.map { |review| review[:content] }
+    @actors = actor_data.map do |actor| 
+    {
+      name: actor[:name],
+      character: actor[:character]
+    } 
+    end
+    # @actor_names = actor_data.map { |actor| actor[:name] }
+    # @characters = actor_data.map { |actor| actor[:character] }
+    @reviews = review_data.map do |review|
+      {
+        author: review[:author],
+        content: review[:content]
+      }
+    end
+    # @review_authors = review_data.map { |review| review[:author] }
+    # @review_contents = review_data.map { |review| review[:content] }
   end
 end
