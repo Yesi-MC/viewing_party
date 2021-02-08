@@ -5,7 +5,7 @@ class FriendshipsController < ApplicationController
     # Place conditional here when adding email functionality
     # For now, assuming we can send request to user and they are auto your friend
     friend = User.find_by(email: params[:email])
-    #require 'pry'; binding.pry
+
     if user.friends.include?(friend)
       flash[:error] = 'Friend already exists'
     elsif friend.nil?

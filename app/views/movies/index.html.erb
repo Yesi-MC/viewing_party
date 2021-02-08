@@ -1,16 +1,21 @@
+<nav class='navbar navbar-expand-lg navbar-dark bg-dark'>
+  <a class='navbar-brand' href='/'>Home</a>
+</nav>
 
-<h1> Top <%= @movies.count %> Rated Movie Results <h1>
-
-<%= link_to "Find Top Rated Movies", movies_path %>
-
-<%= form_tag movies_search_path, method: :get do %>
-    <p>Find Movies:</p>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <%= form_tag movies_search_path, method: :get do %>
+    <h2>Find Movies:</h2>
     <%= text_field_tag :movie %>
     <%= submit_tag "Search" %>
-<% end %>
+    <% end %>
+    <h1 class="display-4"><h1> Top <%= @movies.count %> Rated Movie Results <h1></h1>
+  </div>
+</div>
 
 <% @movies.each do |movie| %>
-
-  <h5> Movie Tittle: <%= link_to movie.title, "/movies/#{movie.id}" %> </h5>
+  <ul>
+  <li><h5> Movie Tittle: <%= link_to movie.title, "/movies/#{movie.id}" %> </h5></li>
   <h5> Voter Average: <%= movie.vote_average %> </h5></br>
+  </ul>
 <% end %></br>
