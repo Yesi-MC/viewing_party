@@ -22,7 +22,8 @@ class MoviesController < ApplicationController
   end
 
   def details 
-    movie_id = params[:id] 
+    #movie_id = params[:id]
+    @movie_details = MovieFacade.api_movie_details(params[:id])
     # conn = Faraday.new("https://api.themoviedb.org")
     # response = conn.get("/3/movie/#{movie_id}?api_key=#{ENV['movie_api_key']}") 
     # @movie = JSON.parse(response.body, symbolize_names: true )
@@ -34,7 +35,6 @@ class MoviesController < ApplicationController
     # response3 = conn.get("/3/movie/#{movie_id}/reviews?api_key=#{ENV['movie_api_key']}") 
     # data_review = JSON.parse(response3.body, symbolize_names: true )
     # @reviews = data_review[:results]
-    
   end
 end
 
