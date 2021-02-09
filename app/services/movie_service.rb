@@ -40,7 +40,7 @@ class MovieService
   private
 
   def self.conn
-    Faraday.new("https://api.themoviedb.org") do |f|
+    Faraday.new("https://api.themoviedb.org") #do |f|
       # f.params['api_key'] = ENV['TMDB_API_KEY']
 
       # f.params['api_key'] = ENV['movie_api_key']
