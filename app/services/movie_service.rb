@@ -40,7 +40,12 @@ class MovieService
   private
 
   def self.conn
-    Faraday.new("https://api.themoviedb.org")
+    Faraday.new("https://api.themoviedb.org") do |f|
+      # f.params['api_key'] = ENV['TMDB_API_KEY']
+
+      # f.params['api_key'] = ENV['movie_api_key']
+      # f.headers['Content-Type'] = 'application/json'
+    # end
   end
 
   def self.parse_data(response)
