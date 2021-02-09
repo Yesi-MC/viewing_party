@@ -5,7 +5,20 @@ class WatchPartiesController < ApplicationController
   end
 
   def create
-    require 'pry'; binding.pry
-    redirect_to dashboard_path(session[:user_id])
+    @watch_party = WatchParty.new(watch_party_params)
+    @watch_party.update(movie_title: session[:title], user_id: session[:user_id])
+    if @watch_party.save
+      flash[:notice] = "Party has been created!"
+      redirect_to dashboard_path(current_user)
+    else
+      flash[:notice] = "Update failed"
+      redirect_to new_watch_party_path(current_user)
+    end
+  end
+
+  private
+
+  def watch_party_params
+    params.require(:watch_party).permit(:date, :time, :duration, :movie_title)
   end
 end

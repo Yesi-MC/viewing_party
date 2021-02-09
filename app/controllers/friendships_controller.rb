@@ -10,6 +10,8 @@ class FriendshipsController < ApplicationController
       flash[:error] = 'Friend already exists'
     elsif friend.nil?
       flash[:error] = 'Person does not exist!'
+    elsif friend.email == user.email
+      flash[:error] = "You cannot add yourself as a friend!"
     else
       Friendship.create!(user_id: user.id, friend_id: friend.id)
     end

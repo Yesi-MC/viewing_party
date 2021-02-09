@@ -1,6 +1,7 @@
 <%= form_with model: @watch_party, url: watch_parties_path, method: :post do |f| %>
   <h1>Movie: <%= session[:title] %></h1>
 
+  <%= f.label :title, session[:title]%>
   <%= f.label :date%>
   <%= f.date_field(:date,:value => Time.now.strftime("%Y-%m-%d")) %><br/><br/>
   <%= f.label :time %> (HH:MM AM/PM)
