@@ -5,4 +5,10 @@ class WatchParty < ApplicationRecord
   belongs_to :user
   has_many :guests, dependent: :destroy
   has_many :invitees, through: :guests
+
+
+  def valid_party(date)
+    date > Time.now
+  end
+
 end
