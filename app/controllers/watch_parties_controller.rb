@@ -12,7 +12,7 @@ class WatchPartiesController < ApplicationController
       redirect_to dashboard_path(current_user)
     else
       flash[:notice] = "Update failed"
-      redirect_to new_watch_party_path(current_user)
+      render new_watch_party_path(current_user)
     end
   end
 
