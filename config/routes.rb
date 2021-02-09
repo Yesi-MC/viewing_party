@@ -7,11 +7,12 @@ Rails.application.routes.draw do
   get "/movies/:id", to: "movies#details" 
   
   resources :users, only: [:new, :create]
-  resources :discover, only: [:index]
-
-
   get '/users/:id/dashboard', to: 'users/dashboard#index', as: :dashboard
+  get '/users/:id/watch_party/new', to: 'watch_party#new', as: 'new_party'
   post '/users/:id/dashboard', to: 'friendships#create', as: 'friends'
+  
+  resources :discover, only: [:index]
+  
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
