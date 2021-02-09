@@ -25,23 +25,19 @@ RSpec.describe 'New Party Page' do
             
             click_on "Create a Viewing Party for Movie"
 
+            fill_in "watch_party[time]", with: "10:00:AM"
+
             expect(current_path).to eq(new_watch_party_path(user))
+            expect(find_field("watch_party[date]").value).to have_content(Time.now.strftime("%Y-%m-%d"))
+            expect(find_field("watch_party[duration]").value).to have_content("0")
+            expect(find_field("watch_party[time]").value).to have_content("10:00:AM")
             expect(page).to have_content("Movie: Untitled Spy Kids Reboot")
-            save_and_open_page
-            within('input#runtime') do
-              expect(page).to have_content("0")
-            end
-            within('section#date') do
-              expect(page).to have_content("Date")
-            end
-            within('section#start-time') do
-              expect(page).to have_content("Start Time: ")
-            end
-            within('section#friends-invitable') do
-              expect(page).to have_content("friend@friend.com")
-            end
+
+            expect(page).to have_content(friend.email)
             
-            click_on "Create A Party!"
+            check "friend"
+
+            click_button "Create Party"
 
             expect(current_path).to eq(dashboard_index_path)
           end
