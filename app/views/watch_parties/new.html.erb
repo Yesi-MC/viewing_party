@@ -1,21 +1,5 @@
 <h1>Welcome <%= current_user.email %>!</h1>
 
-<section>
-  <h3>Viewing Party Details</h3>
-  <%= form_with url: "/watch_parties/#{@movie.movie_id}/create", local: true do |form| %>
-    <%= form.label :movie_title, "Movie Title" %>
-    <%= form.text_field :movie_title, :value => @movie.title, :readonly => true %><br><br>
-    <%= form.label :duration_of_party, "Duration of Party" %>
-    <%= form.text_field :duration_of_party, :value => @movie.runtime %><br><br>
-    <%= form.label :date %>
-    <%= form.date_field :date %><br><br>
-    <%= form.label :start_time, "Start Time" %>
-    <%= form.time_field :start_time %><br><br>
-    <%= form.label :invite_friends, "Invite Friends" %><br>
-    <%= form.collection_check_boxes :invite_friends, current_user.friends, :id, :username %><br><br>
-    <%= form.submit 'Create Party' %>
-  <% end %>
-</section>
 <%= form_with model: @watch_party, url: watch_parties_path, method: :post do |f| %>
   <h1>Movie: <%= session[:title] %></h1>
 
