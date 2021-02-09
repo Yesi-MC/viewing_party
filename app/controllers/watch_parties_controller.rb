@@ -5,7 +5,7 @@ class WatchPartiesController < ApplicationController
   end
 
   def create
-    #require 'pry'; binding.pry
+    require 'pry'; binding.pry
     redirect_to dashboard_path(session[:user_id])
   end
 end

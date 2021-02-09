@@ -12,8 +12,8 @@
   <p>Invite friends!</p>
   <% @friends.each do |friend| %>
     <section id=<%= "friend-#{friend.id}" %>>
-        <%= check_box_tag :friend, value: friend.id %>
-        <%= f.label :friend, friend.email %><br/>
+      <%= f.label :friend, friend.email %><br/>
+      <%= check_box(User, friend.id, options = {}) %>
     </section>
   <% end %>
 

@@ -11,25 +11,24 @@ RSpec.describe 'New Party Page' do
             other_friend = User.create(email: 'other_friend@friend.com', password: '1234')
             Friendship.create(user_id: user.id, friend_id: friend.id)
             Friendship.create(user_id: user.id, friend_id: other_friend.id)
-            
+
             visit login_path
 
             fill_in "email", with: user.email
             fill_in "password", with: user.password
             click_on "Log In"
-            
+
             click_on "Discover Movies"
 
             fill_in "movie", with: "Untitled Spy Kids Reboot"
             click_on "Search"
-          
+
             click_on "Untitled Spy Kids Reboot"
-            
+
             click_on "Create a Viewing Party for Movie"
 
             fill_in "watch_party[time]", with: "10:00:AM"
 
-            save_and_open_page
             expect(current_path).to eq(new_watch_party_path(user))
             expect(find_field("watch_party[date]").value).to have_content(Time.now.strftime("%Y-%m-%d"))
             expect(find_field("watch_party[duration]").value).to have_content("0")
@@ -37,14 +36,13 @@ RSpec.describe 'New Party Page' do
             expect(page).to have_content("Movie: Untitled Spy Kids Reboot")
 
             expect(page).to have_content(friend.email)
-            save_and_open_page
             
             within("section#friend-#{friend.id}") do
-              check "friend"
+              check "User_#{friend.id}"
             end
 
             within("section#friend-#{other_friend.id}") do
-              check "friend"
+              check "User_#{other_friend.id}"
             end
 
             click_button "Create Party"
