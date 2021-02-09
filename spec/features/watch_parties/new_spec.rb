@@ -9,8 +9,15 @@ RSpec.describe 'New Party Page' do
             user = User.create(email: 'user@example.com', password: '1234')
             friend = User.create(email: 'friend@friend.com', password: '1234')
             Friendship.create(user_id: user.id, friend_id: friend.id)
+            
+            visit login_path
 
-            visit discover_index_path
+            fill_in "email", with: user.email
+            fill_in "password", with: user.password
+            click_on "Log In"
+            
+            click_on "Discover Movies"
+
             fill_in "movie", with: "Untitled Spy Kids Reboot"
             click_on "Search"
           
@@ -18,8 +25,9 @@ RSpec.describe 'New Party Page' do
             
             click_on "Create a Viewing Party for Movie"
 
-            expect(current_path).to eq(new_watch_party_path)
-            expect(page).to have_content("Untitled Spy Kids Reboot")
+            expect(current_path).to eq(new_watch_party_path(user))
+            expect(page).to have_content("Movie: Untitled Spy Kids Reboot")
+            save_and_open_page
             within('input#runtime') do
               expect(page).to have_content("0")
             end
