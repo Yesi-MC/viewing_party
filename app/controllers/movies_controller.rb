@@ -23,12 +23,13 @@ class MoviesController < ApplicationController
       redirect_to discover_index_path
     else 
       @movies = MovieFacade.search_movie(movie_search)
-    end 
+    end
   end
 
   def details 
     @movie_details = MovieFacade.api_movie_details(params[:id])
-
+    session[:title] = @movie_details.title
+    session[:runtime] = @movie_details.runtime
     # conn = Faraday.new("https://api.themoviedb.org")
     # response = conn.get("/3/movie/#{movie_id}?api_key=#{ENV['movie_api_key']}")
     # @movie = JSON.parse(response.body, symbolize_names: true )
