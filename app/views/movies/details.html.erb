@@ -2,9 +2,9 @@
   <a class='navbar-brand' href='/'>Home</a>
 </nav>
 
-<h2> Welcome, (person name) </h2>
+<h2> Welcome <%= current_user.email%> </h2>
 
-<center><%= button_to 'Create a Viewing Party for Movie' %></center>
+<center><%= link_to 'Create a Viewing Party for Movie', watch_parties_new_path %></center>
 
 <h1>Movie Title: <%= @movie_details.title %></h1>
 <h3> Movie Vote Average: <%= @movie_details.vote_average %></h3>

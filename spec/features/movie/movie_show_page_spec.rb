@@ -25,7 +25,22 @@ RSpec.describe 'Movie Show Page' do
       end
     end
   end
-  describe 'Sad Paths' do
+  # describe 'Sad Paths' do
 
+  # end
+  describe 'button' do 
+    it 'can see a button to create a viewing party' do 
+      VCR.use_cassette("movie_details") do
+      movie_id = "100"
+
+      visit "/movies/#{movie_id}"
+      
+      expect(page).to have_button("Create a Viewing Party for Movie")
+
+      click_button "Create a Viewing Party for Movie"
+
+      expect(current_path).to eq(watch_parties_new_path)
+      end 
+    end
   end
 end
