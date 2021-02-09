@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   
   resources :users, only: [:new, :create]
   get '/users/:id/dashboard', to: 'users/dashboard#index', as: :dashboard
-  get '/users/:id/watch_party/new', to: 'watch_party#new', as: 'new_party'
+  get '/users/:id/watch_party/new', to: 'watch_party#new', as: 'new_watch_party'
   post '/users/:id/dashboard', to: 'friendships#create', as: 'friends'
   
   resources :discover, only: [:index]
