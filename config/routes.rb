@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get '/users/:id/watch_party/new', to: 'watch_parties#new', as: 'new_watch_party'
   post '/users/:id/dashboard', to: 'friendships#create', as: 'friends'
   
+  resources :watch_parties, only: [:create]
+
   resources :discover, only: [:index]
   
 

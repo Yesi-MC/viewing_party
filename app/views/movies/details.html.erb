@@ -4,7 +4,7 @@
 
 <h2> Welcome, (person name) </h2>
 
-<center><%= button_to 'Create a Viewing Party for Movie' %></center>
+<center><%= button_to 'Create a Viewing Party for Movie', new_watch_party_path(session[:user_id]), method: :get %></center>
 
 <h1>Movie Title: <%= @movie_details.title %></h1>
 <h3> Movie Vote Average: <%= @movie_details.vote_average %></h3>
