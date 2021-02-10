@@ -15,4 +15,9 @@ class User < ApplicationRecord
   def dates_of_all_watch_parties
     party_host.select("watch_parties.date").pluck(:date)
   end
+
+  def any_same_date_party?(new_party_date)
+    return false if dates_of_all_watch_parties.include?(new_party_date)
+    true
+  end
 end
