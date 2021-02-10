@@ -39,7 +39,7 @@
 <div class="card" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title">Viewing Parties</h5>
-    <p><% current_user.party_host.each do |party| %></p>
+    <p><% @user.party_host.each do |party| %></p>
     <p><%= party[:movie_title] %></p>
     <p><% end %></p>
   </div>
