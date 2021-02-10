@@ -19,10 +19,7 @@ RSpec.describe 'Dashboard Index' do
           expect(page).to have_button('Add Friend')
           expect(page).to have_field(:email)
         end
-        within('section#viewing-parties') do
-          expect(page).to have_content('Feeling like partying?')
-          expect(page).to have_link('Click here to start a party!')
-        end
+    
         expect(page).to have_button('Discover Movies')
         click_on 'Discover Movies'
 

@@ -38,9 +38,12 @@
 
 <div class="card" style="width: 18rem;">
   <div class="card-body">
-    <h5 class="card-title">Feeling like partying?</h5>
-    <p><%= link_to "Click here to start a party!" %></p>
+    <h5 class="card-title">Viewing Parties</h5>
+    <p><% @user.party_host.each do |party| %></p>
+    <p><%= party[:movie_title] %></p>
+    <p><% end %></p>
   </div>
 </div>
 </section>
+
 <p><%= button_to 'Discover Movies', discover_index_path, method: :get %></p>

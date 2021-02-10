@@ -6,6 +6,21 @@ RSpec.describe 'Movie Show Page' do
       it 'can visit a show page and see the movie attributes' do
         VCR.use_cassette("movie_details") do
           movie_id = "100"
+
+          user = User.create(email: 'user@gmail.com', password: 'password')
+          user2 = User.create(email: 'user2@gmail.com', password: 'password2')
+          user3 = User.create(email: 'user3@gmail.com', password: 'password3')
+
+          friendship = user.friendships.create(friend_id: user2.id )
+          friendship = user.friendships.create(friend_id: user3.id )
+
+          visit login_path
+
+          fill_in :email, with: "user@gmail.com"
+          fill_in :password, with: "password"
+
+          click_button 'Log In'
+
           visit "/movies/#{movie_id}"
 
           expect(page).to have_content("Movie Title: Lock, Stock and Two Smoking Barrels")
@@ -25,7 +40,33 @@ RSpec.describe 'Movie Show Page' do
       end
     end
   end
-  describe 'Sad Paths' do
+  describe 'button' do 
+    it 'can see a button to create a viewing party' do 
+      VCR.use_cassette("movie_details") do
+      movie_id = "100"
 
+      user = User.create(email: 'user@gmail.com', password: 'password')
+      user2 = User.create(email: 'user2@gmail.com', password: 'password2')
+      user3 = User.create(email: 'user3@gmail.com', password: 'password3')
+
+      friendship = user.friendships.create(friend_id: user2.id )
+      friendship = user.friendships.create(friend_id: user3.id )
+
+      visit login_path
+
+      fill_in :email, with: "user@gmail.com"
+      fill_in :password, with: "password"
+
+      click_button 'Log In'
+
+      visit "/movies/#{movie_id}"
+      
+      expect(page).to have_button("Create a Viewing Party for Movie")
+
+      click_button "Create a Viewing Party for Movie"
+
+      expect(current_path).to eq(new_watch_party_path(user.id))
+      end 
+    end
   end
 end
