@@ -17,7 +17,7 @@ RSpec.describe 'New Party Page' do
             fill_in "email", with: user.email
             fill_in "password", with: user.password
             click_on "Log In"
-            # require 'pry'; binding.pry
+
             click_on "Discover Movies"
             
             fill_in "movie", with: "Untitled Spy Kids Reboot"
@@ -27,14 +27,10 @@ RSpec.describe 'New Party Page' do
 
             click_on "Create a Viewing Party for Movie"
 
-            # fill_in "watch_party[time]", with: "10:00 AM"
             fill_in "watch_party[date]", with: "03-03-2021"
             fill_in "watch_party[duration]", with: "120"
 
             expect(current_path).to eq(new_watch_party_path(user))
-            # expect(find_field("watch_party[date]").value).to have_content(Time.now.strftime("%Y-%m-%d"))
-            # expect(find_field("watch_party[duration]").value).to have_content("0")
-            # expect(find_field("watch_party[time]").value).to have_content("10:00:AM")
             expect(page).to have_content("Movie: Untitled Spy Kids Reboot")
 
             expect(page).to have_content(friend.email)

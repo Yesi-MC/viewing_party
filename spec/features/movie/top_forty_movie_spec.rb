@@ -8,7 +8,7 @@ RSpec.describe 'API Connection' do
 
         visit discover_index_path
 
-        click_link "Find Top Rated Movies" #this action calls an api so then it saves the reponse from this action into the to-movies file 
+        click_link "Find Top Rated Movies"
     
         expect(current_path).to eq(movies_path)
         expect(page).to have_content("Gabriel's Inferno Part III")
