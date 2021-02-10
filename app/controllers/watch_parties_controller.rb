@@ -13,9 +13,9 @@ class WatchPartiesController < ApplicationController
       flash[:error] = "Update failed"
       redirect_to new_watch_party_path(current_user)
     else @watch_party.update!(movie_title: session[:title], user_id: session[:user_id]) && @watch_party.valid_party(watch_party_params["date"])
-        flash[:success] = "Party has been created!"
-        @watch_party.save
-        redirect_to dashboard_path(current_user)
+      flash[:success] = "Party has been created!"
+      @watch_party.save
+      redirect_to dashboard_path(current_user)
     end
   end
 
