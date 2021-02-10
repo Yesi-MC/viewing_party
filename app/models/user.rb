@@ -5,6 +5,7 @@ class User < ApplicationRecord
   validates :password, presence: true
 
   has_many :watch_parties, dependent: :destroy
+  has_many :guests, through: :watch_parties
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
 
@@ -20,6 +21,12 @@ class User < ApplicationRecord
   def any_same_date_party?(new_party_date)
     return true if dates_of_all_my_hosted_watch_parties.include?(new_party_date)
     false
+  end
+
+  def same_day(date, time)
+    watch_parties.any? do |party|
+      party.date == date && party.time == time
+    end
   end
 
   # Methods for Guest Users
