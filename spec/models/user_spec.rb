@@ -29,5 +29,12 @@ RSpec.describe User do
 
       expect(user.dates_of_all_watch_parties).to eq(["Today", "Today1"])
     end
+    it '#dates_of_all_watch_parties' do
+      user = User.create(email: "user@user.com", password: "password")
+      watch_party_1 = user.watch_parties.create(user_id: user.id, movie_title: "Test", date: "Today", time: "10:00 AM", duration: 20)
+
+      expect(user.any_same_date_party?("Today")).to eq(false)
+      expect(user.any_same_date_party?("Today1")).to eq(true)
+    end
   end
 end
