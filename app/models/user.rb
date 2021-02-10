@@ -25,6 +25,7 @@ class User < ApplicationRecord
   # Methods for Guest Users
 
   def parties_invited_to
-    joins(:guests).where("guests.invitee_id = ?", self.id)
+    WatchParty.joins(:guests)
+    .where("guests.invitee_id = ?", self.id)
   end
 end
