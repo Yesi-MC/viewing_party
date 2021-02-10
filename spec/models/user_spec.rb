@@ -46,7 +46,6 @@ RSpec.describe User do
 
       Guest.create(watch_party_id: watch_party_1.id, invitee_id: attendee_1.id)
       Guest.create(watch_party_id: watch_party_2.id, invitee_id: attendee_1.id)
-
       expect(attendee_1.parties_invited_to).to eq([watch_party_1, watch_party_2])
       expect(attendee_2.parties_invited_to).to eq([])
 
