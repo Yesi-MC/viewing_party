@@ -6,7 +6,7 @@ class WatchPartiesController < ApplicationController
 
   def create
     @watch_party = WatchParty.new(watch_party_params)
-    if current_user.same_day(params[:date], params[:time])
+    if current_user.same_day(params[:watch_party][:date], params[:watch_party][:time])
       flash[:error] = "You have scheduled another party at this time and date. Please try again."
       redirect_to new_watch_party_path(current_user)
     elsif @watch_party.duration < session[:runtime]
