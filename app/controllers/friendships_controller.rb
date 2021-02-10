@@ -15,6 +15,6 @@ class FriendshipsController < ApplicationController
     else
       Friendship.create!(user_id: user.id, friend_id: friend.id)
     end
-    redirect_to "/users/#{user.id}/dashboard"
+    redirect_to dashboard_path(user)
   end
 end
