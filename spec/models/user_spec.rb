@@ -48,7 +48,12 @@ RSpec.describe User do
       Guest.create(watch_party_id: watch_party_2.id, invitee_id: attendee_1.id)
       expect(attendee_1.parties_invited_to).to eq([watch_party_1, watch_party_2])
       expect(attendee_2.parties_invited_to).to eq([])
-
+    end
+    it '#same_day' do
+      user = User.create(email: "user@user.com", password: "password")
+      watch_party_1 = user.watch_parties.create(user_id: user.id, movie_title: "Test", date: "02-20-2021", time: "10:00 AM", duration: 20)
+      
+      expect(user.same_day(watch_party_1.date, watch_party_1.time)).to eq(true)
     end
   end
 end
