@@ -9,16 +9,16 @@ describe 'User registration' do
 
       expect(current_path).to eq(new_user_path)
 
-      email = 'partyinthekitchen@gmail.com'
+      email = 'something@gmail.com'
       password = 'hellyeah'
       password_confirmation = 'hellyeah'
 
       fill_in 'user[email]', with: email
       fill_in 'user[password]', with: password
       fill_in 'user[password_confirmation]', with: password
-
+# require 'pry'; binding.pry
       click_button 'Create User'
-
+# require 'pry'; binding.pry
       user = User.first
 
       expect(current_path).to eq(dashboard_path(user))
