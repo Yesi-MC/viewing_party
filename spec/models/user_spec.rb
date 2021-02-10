@@ -12,7 +12,7 @@ RSpec.describe User do
     it { should validate_presence_of :password }
   end
   describe 'instance methods' do
-    it 'party_host' do
+    it '#party_host' do
       user = User.create(email: "user@user.com", password: "password")
       watch_party_1 = user.watch_parties.create(user_id: user.id, movie_title: "Test", date: "Today", time: "10:00 AM", duration: 20)
     
@@ -21,6 +21,13 @@ RSpec.describe User do
       watch_party_2 = user.watch_parties.create(user_id: user.id, movie_title: "Test1", date: "Today1", time: "11:00 AM", duration: 201)
 
       expect(user.party_host).to eq([watch_party_1, watch_party_2])
+    end
+    it '#dates_of_all_watch_parties' do
+      user = User.create(email: "user@user.com", password: "password")
+      watch_party_1 = user.watch_parties.create(user_id: user.id, movie_title: "Test", date: "Today", time: "10:00 AM", duration: 20)
+      watch_party_2 = user.watch_parties.create(user_id: user.id, movie_title: "Test1", date: "Today1", time: "11:00 AM", duration: 201)
+
+      expect(user.dates_of_all_watch_parties).to eq(["Today", "Today1"])
     end
   end
 end
