@@ -52,6 +52,36 @@ RSpec.describe 'New Party Page' do
     end
   end
   describe 'Sad Path' do
+    it 'cannot create a party with a date that the user is hosting another party on' do
+      VCR.use_cassette("search_movies") do
+        VCR.use_cassette("spy_kids_details") do
+          user = User.create(email: 'user@example.com', password: '1234')
+          user.watch_parties.create(movie_title: "Test", date: "03-03-2021", duration: 150, time: "10:00 AM")
 
+          visit login_path
+
+          fill_in "email", with: user.email
+          fill_in "password", with: user.password
+          click_on "Log In"
+
+          click_on "Discover Movies"
+          
+          fill_in "movie", with: "Untitled Spy Kids Reboot"
+          click_on "Search"
+       
+          click_on "Untitled Spy Kids Reboot"
+
+          click_on "Create a Viewing Party for Movie"
+
+          fill_in "watch_party[date]", with: "03-03-2021"
+          fill_in "watch_party[duration]", with: "120"
+
+          click_button "Create Party"
+
+          expect(current_path).to eq(new_watch_party_path(user))
+          expect(page).to have_content("You are already hosting another party at this date. Please change the date")
+        end
+      end
+    end
   end
 end
