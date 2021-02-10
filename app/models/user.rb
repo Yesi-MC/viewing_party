@@ -11,4 +11,8 @@ class User < ApplicationRecord
   def party_host
     watch_parties
   end
+
+  def dates_of_all_watch_parties
+    party_host.select("watch_parties.date").pluck(:date)
+  end
 end
