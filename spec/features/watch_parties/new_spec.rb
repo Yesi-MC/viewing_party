@@ -44,7 +44,7 @@ RSpec.describe 'New Party Page' do
             end
 
             click_button "Create Party"
-
+            save_and_open_page
             expect(current_path).to eq(dashboard_path(user.id))
           end
         end
