@@ -17,7 +17,7 @@ class User < ApplicationRecord
   end
 
   def any_same_date_party?(new_party_date)
-    return false if dates_of_all_watch_parties.include?(new_party_date)
-    true
+    return true if dates_of_all_watch_parties.include?(new_party_date)
+    false
   end
 end
