@@ -10,8 +10,10 @@ class WatchPartiesController < ApplicationController
       flash[:success] = "Party has been created!"
       @watch_party.save
       redirect_to dashboard_path(current_user)
+    elsif current_user.any_same_date_party?(@watch_party.date)
+      flash[:error] = "You are already hosting another party at this date. Please change the date"
+      redirect_to new_watch_party_path(current_user)
     else
-      # require 'pry'; binding.pry
       flash[:error] = "Update failed"
       redirect_to new_watch_party_path(current_user)
     end
