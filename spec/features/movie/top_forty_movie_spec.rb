@@ -4,12 +4,6 @@ RSpec.describe 'API Connection' do
   describe 'happy path' do
     it "can see the top 40 rated movies" do
       VCR.use_cassette("top_movies") do #creates cassette
-        #L8 creates the casseette- calls api once and saves response in the top_movies.yml  
-        #if we change test then al we need to do is delete the to-movies.yml
-        #it does whatever is in the code.. but it saves response from that api into that file. 
-
-        #we dont need a webmock when we use vcr. the only thing we need is the gem-but NO webmock response. 
-        
         user = User.create(email: 'user@example.com', password: 'password')
 
         visit discover_index_path
