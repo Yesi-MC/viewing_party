@@ -10,7 +10,8 @@
   <%= f.time_field :time, value: Time.now, required: :true %><br/><br/>
 
   <%= f.label :duration %> (Minutes)
-  <%= f.text_field :duration , id: "runtime" %><br/><br/>
+  <%= f.number_field :duration, {min: @watch_party.duration } %>
+
 
   <p>Invite friends!</p>
   <% @friends.each do |friend| %>
