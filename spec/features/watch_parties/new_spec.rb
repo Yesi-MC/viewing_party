@@ -44,7 +44,7 @@ RSpec.describe 'New Party Page' do
             end
 
             click_button "Create Party"
-            save_and_open_page
+
             expect(current_path).to eq(dashboard_path(user.id))
           end
         end
@@ -56,7 +56,7 @@ RSpec.describe 'New Party Page' do
       VCR.use_cassette("search_movies") do
         VCR.use_cassette("spy_kids_details") do
           user = User.create(email: 'user@example.com', password: '1234')
-          user.watch_parties.create(movie_title: "Test", date: "03-03-2021", duration: 150, time: "10:00 AM")
+          party = user.watch_parties.create(movie_title: "Test", date: "03-03-2021", duration: 150, time: "15:00")
 
           visit login_path
 
@@ -73,13 +73,14 @@ RSpec.describe 'New Party Page' do
 
           click_on "Create a Viewing Party for Movie"
 
-          fill_in "watch_party[date]", with: "03-03-2021"
+          fill_in "watch_party[date]", with: party.date
+          fill_in "watch_party[time]", with: party.time
           fill_in "watch_party[duration]", with: "120"
 
           click_button "Create Party"
 
           expect(current_path).to eq(new_watch_party_path(user))
-          expect(page).to have_content("You are already hosting another party at this date. Please change the date")
+          expect(page).to have_content("You have scheduled another party at this time and date. Please try again.")
         end
       end
     end
