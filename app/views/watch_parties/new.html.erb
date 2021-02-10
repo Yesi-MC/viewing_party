@@ -5,7 +5,7 @@
 
 
   <%= f.label :date%>
-  <%= f.date_field(:date,:value => Time.now.strftime("%Y-%m-%d"), required: :true) %><br/><br/>
+  <%= f.date_field(:date,:value => Time.now.strftime("%m-%d-%Y"), required: :true) %><br/><br/>
   <%= f.label :time %> (HH:MM AM/PM)
   <%= f.time_field :time, value: Time.now, required: :true %><br/><br/>
 
