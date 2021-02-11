@@ -115,9 +115,8 @@ RSpec.describe 'New Party Page' do
 
         within("section#guesting-parties") do
           expect(page).to have_content("Parties Invited To")
-          expect(page).to have_content(watch_party_1)
-          expect(page).not_to have_content(watch_party_2)
           expect(page).to have_content(watch_party_1.movie_title)
+          expect(page).not_to have_content(watch_party_2.movie_title)
           expect(page).to have_content(watch_party_1.date)
           expect(page).to have_content(watch_party_1.time)
           expect(page).to have_content(watch_party_1.duration)
