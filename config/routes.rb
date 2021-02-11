@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get "/movies", to: "movies#index"
   get "/movies/search", to: "movies#search"
-  get "/movies/:id", to: "movies#details" 
+  get "/movies/:id", to: "movies#details", as: 'movie_details'
   
   resources :users, only: [:new, :create]
   get '/users/:id/dashboard', to: 'users/dashboard#index', as: :dashboard

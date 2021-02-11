@@ -10,5 +10,4 @@ class WatchParty < ApplicationRecord
   def valid_party(date)
     date > Time.now
   end
-
 end

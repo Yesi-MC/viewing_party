@@ -39,17 +39,54 @@ RSpec.describe 'Dashboard Index' do
 
         fill_in :email, with: friend_email
         click_on "Add Friend"
-
-        expect(user.friends).to eq([friend])
-        expect(current_path).to eq("/users/#{user.id}/dashboard")
+        expect(current_path).to eq(dashboard_path(user))
 
         within('section#friends') do
-          # User currently has no friends
           expect(page).to_not have_content('You currently have no friends')
           expect(page).to have_content(friend.email)
           expect(page).to have_button('Add Friend')
           expect(page).to have_field(:email)
         end
+      end
+      it 'can not add the same friend twice' do
+        visit login_path
+        email = 'email@gmail.com'
+        password = 'test'
+        friend_email = 'email2@gmail.com'
+        user = User.create(email: email, password: password)
+        user = User.create(email: friend_email, password: password)
+        fill_in :email, with: email
+        fill_in :password, with: password
+        click_on 'Log In'
+
+        fill_in :email, with: friend_email
+        click_on "Add Friend"
+        fill_in :email, with: friend_email
+        click_on "Add Friend"
+
+        within('section#friends') do
+          expect(page).to have_content(friend_email)
+        end
+        expect(page).to have_content("Friend already exists")
+      end
+      it 'cannot add self as friend' do
+        visit login_path
+        email = 'email@gmail.com'
+        password = 'test'
+        friend_email = 'email2@gmail.com'
+        user = User.create(email: email, password: password)
+        fill_in :email, with: email
+        fill_in :password, with: password
+        click_on 'Log In'
+
+        fill_in :email, with: email
+        click_on "Add Friend"
+
+        within('section#friends') do
+          expect(page).not_to have_content(email)
+          expect(page).to have_content("You currently have no friends")
+        end
+        expect(page).to have_content("You cannot add yourself as a friend!")
       end
     end
     describe 'Sad Paths' do
