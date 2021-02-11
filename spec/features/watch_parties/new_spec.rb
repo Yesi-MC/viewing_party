@@ -191,5 +191,38 @@ RSpec.describe 'New Party Page' do
         end
       end
     end
+    it 'cannot create a party with a date/time in the past' do
+      VCR.use_cassette("search_movies") do
+        VCR.use_cassette("spy_kids_details") do
+          user = User.create(email: 'user@example.com', password: '1234')
+          date = "01-01-2019"
+          duration = 200
+          time = "00:01"
+
+          visit login_path
+
+          fill_in "email", with: user.email
+          fill_in "password", with: user.password
+          click_on "Log In"
+
+          click_on "Discover Movies"
+          
+          fill_in "movie", with: "Untitled Spy Kids Reboot"
+          click_on "Search"
+       
+          click_on "Untitled Spy Kids Reboot"
+
+          click_on "Create a Viewing Party for Movie"
+          fill_in "watch_party[date]", with: date
+          fill_in "watch_party[time]", with: time
+          fill_in "watch_party[duration]", with: duration
+
+          click_button "Create Party"
+
+          expect(current_path).to eq(new_watch_party_path(user))
+          expect(page).to have_content("You can't party in the past, silly!")
+        end
+      end
+    end
   end
 end
