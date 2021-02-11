@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     new_user = User.new(user_params)
     if new_user.save && EmailAddress.valid?(new_user.email)
       session[:user_id] = new_user.id
+      RegistrationNotifierMailer.welcome(new_user).deliver_now
       flash[:success] = "Welcome, #{new_user.email}"
       redirect_to "/users/#{current_user.id}/dashboard"
     else
