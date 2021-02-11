@@ -18,13 +18,12 @@ class WatchPartiesController < ApplicationController
     elsif @watch_party.update(movie_title: session[:title], user_id: session[:user_id])
       flash[:success] = 'Party has been created!'
       @watch_party.save
-      params[:User].each do |guest_id, answer|
-        @watch_party.guests.create(invitee_id: guest_id.to_i, watch_party_id: @watch_party.id) if answer == '1'
+      if params[:User] != nil
+        params[:User].each do |guest_id, answer|
+          @watch_party.guests.create(invitee_id: guest_id.to_i, watch_party_id: @watch_party.id) if answer == '1'
+        end
       end
       redirect_to dashboard_path(current_user)
-    else
-      flash[:error] = 'Update failed'
-      redirect_to new_watch_party_path(current_user)
     end
   end
 

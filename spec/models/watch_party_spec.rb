@@ -24,8 +24,17 @@ RSpec.describe WatchParty do
 
       expect(watch_party_2.valid_party(watch_party_2.date)).to eq(true)
     end
-    xit '#valid_party_time' do
+    it '#valid_party_time' do
+      user = User.create(email: "email@email.com", password: "password")
+      watch_party_1 = user.watch_parties.create(user_id: user.id, movie_title: "Test", date: Time.zone.now.strftime('%m-%d-%y'), time: Time.zone.now.strftime('%H:%M'), duration: 20)
 
+      same_time = Time.zone.now.strftime('%H:%M')
+
+      expect(watch_party_1.valid_party_time(same_time)).to eq(false)
+
+      later_time = (Time.zone.now.strftime('%H:%M').to_i + 1).to_s
+
+      expect(watch_party_1.valid_party_time(later_time)).to eq(true)
     end
   end
 end
