@@ -23,7 +23,7 @@
       <p> <%= friend.email %> </p>
       <% end %>
       <% end %>
-      <%= form_tag friends_path(@user), method: :post do %>
+      <%= form_tag friends_path(current_user), method: :post do %>
       <%= label_tag :email, 'Friend Email' %>
       <%= text_field_tag :email %>
       <%= submit_tag "Add Friend"%>
@@ -39,7 +39,7 @@
 <div class="card" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title">Viewing Parties</h5>
-    <p><% @user.party_host.each do |party| %></p>
+    <p><% current_user.party_host.each do |party| %></p>
     <p><%= party[:movie_title] %></p>
     <p><% end %></p>
   </div>

@@ -6,9 +6,7 @@ class WatchParty < ApplicationRecord
   has_many :guests, dependent: :destroy
   has_many :invitees, through: :guests
 
-
   def valid_party(date)
-    date > Time.now
+    date > Time.zone.now
   end
-
 end

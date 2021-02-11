@@ -16,9 +16,9 @@ describe 'User registration' do
       fill_in 'user[email]', with: email
       fill_in 'user[password]', with: password
       fill_in 'user[password_confirmation]', with: password
-# require 'pry'; binding.pry
+
       click_button 'Create User'
-# require 'pry'; binding.pry
+
       user = User.first
 
       expect(current_path).to eq(dashboard_path(user))
