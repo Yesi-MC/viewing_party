@@ -1,8 +1,8 @@
 class MovieService
   class << self
     def top_rated_movies
-      response = conn.get("/3/movie/top_rated?api_key=#{ENV['movie_api_key']}")
-      response2 = conn.get("/3/movie/top_rated?api_key=#{ENV['movie_api_key']}&page=2")
+      response = conn.get("/3/movie/top_rated?")
+      response2 = conn.get("/3/movie/top_rated?&page=2")
       data = parse_data(response)
       data2 = parse_data(response2)
       data[:results].concat(data2[:results])
