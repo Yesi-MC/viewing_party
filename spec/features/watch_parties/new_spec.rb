@@ -49,6 +49,53 @@ RSpec.describe 'New Party Page' do
           end
         end
       end
+      it 'can add friends to the watch party upon creation' do
+        VCR.use_cassette("search_movies") do
+          VCR.use_cassette("spy_kids_details") do
+            user = User.create(email: 'user@example.com', password: '1234')
+            friend = User.create(email: 'friend@friend.com', password: '1234')
+            other_friend = User.create(email: 'other_friend@friend.com', password: '1234')
+            Friendship.create(user_id: user.id, friend_id: friend.id)
+            Friendship.create(user_id: user.id, friend_id: other_friend.id)
+
+            visit login_path
+
+            fill_in "email", with: user.email
+            fill_in "password", with: user.password
+            click_on "Log In"
+
+            click_on "Discover Movies"
+            
+            fill_in "movie", with: "Untitled Spy Kids Reboot"
+            click_on "Search"
+            
+            movie_title = "Untitled Spy Kids Reboot"
+            party_date = "03-03-2021"
+            party_time = "15:20"
+            party_runtime = "120"
+         
+            click_on movie_title
+
+            click_on "Create a Viewing Party for Movie"
+
+
+            fill_in "watch_party[date]", with: party_date
+            fill_in "watch_party[time]", with: party_time
+            fill_in "watch_party[duration]", with: party_runtime
+            page.check "User_#{friend.id}"
+            
+            click_on "Create Party"
+            
+            save_and_open_page
+            within("section#hosting-parties") do
+              expect(page).to have_content(movie_title)
+              expect(page).to have_content("Date: #{party_date}")
+              expect(page).to have_content("Time: #{party_time}")
+              expect(page).to have_content("Duration: #{party_runtime}")
+            end
+          end
+        end
+      end
     end
   end
   describe 'Sad Path' do
