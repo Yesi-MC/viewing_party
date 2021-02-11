@@ -1,4 +1,4 @@
-class Movie # this is for the index and the search 
+class Movie 
   attr_reader :id,
               :title,
               :vote_average
