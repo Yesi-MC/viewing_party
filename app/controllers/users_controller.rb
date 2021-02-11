@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     user[:email] = user[:email].downcase
     new_user = User.new(user)
     if new_user.save && EmailAddress.valid?(new_user.email)
-      session[:user_id] == new_user.id
+      session[:user_id] = new_user.id
       flash[:success] = "Welcome, #{new_user.email}"
       redirect_to "/users/#{current_user.id}/dashboard"
     else
