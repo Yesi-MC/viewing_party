@@ -1,6 +1,5 @@
-class MovieFacade 
-
-  def self.call_api_for_all_top_rated_movies 
+class MovieFacade
+  def self.call_api_for_all_top_rated_movies
     data = MovieService.top_rated_movies
     data.map { |movie| Movie.new(movie) }
   end
