@@ -49,7 +49,7 @@ RSpec.describe 'New Party Page' do
           end
         end
       end
-      it 'can add friends to the watch party upon creation' do
+      it 'can add friends to the watch party upon creation and host can see hosting parties' do
         VCR.use_cassette("search_movies") do
           VCR.use_cassette("spy_kids_details") do
             user = User.create(email: 'user@example.com', password: '1234')
@@ -86,14 +86,41 @@ RSpec.describe 'New Party Page' do
             
             click_on "Create Party"
             
-            save_and_open_page
             within("section#hosting-parties") do
+              expect(page).to have_content("Hosted Parties")
               expect(page).to have_content(movie_title)
               expect(page).to have_content("Date: #{party_date}")
               expect(page).to have_content("Time: #{party_time}")
               expect(page).to have_content("Duration: #{party_runtime}")
             end
           end
+        end
+      end
+      it 'can see parties invited to as a guest' do
+        user = User.create(email: 'user@example.com', password: '1234')
+        friend = User.create(email: 'friend@friend.com', password: '1234')
+        other_friend = User.create(email: 'other_friend@friend.com', password: '1234')
+        Friendship.create(user_id: user.id, friend_id: friend.id)
+        Friendship.create(user_id: user.id, friend_id: other_friend.id)
+        watch_party_1 = user.watch_parties.create(movie_title: "Movie", date: "12-20-2021", time: "15:00", duration: 130)
+        watch_party_2 = user.watch_parties.create(user_id: user, movie_title: "Movie2", date: "12-20-2022", time: "15:00", duration: 130)
+        Guest.create(invitee_id: friend.id, watch_party_id: watch_party_1.id)
+        Guest.create(invitee_id: other_friend.id, watch_party_id: watch_party_2.id)
+        
+        visit login_path
+
+        fill_in "email", with: friend.email
+        fill_in "password", with: friend.password
+        click_on "Log In"
+
+        within("section#guesting-parties") do
+          expect(page).to have_content("Parties Invited To")
+          expect(page).to have_content(watch_party_1)
+          expect(page).not_to have_content(watch_party_2)
+          expect(page).to have_content(watch_party_1.movie_title)
+          expect(page).to have_content(watch_party_1.date)
+          expect(page).to have_content(watch_party_1.time)
+          expect(page).to have_content(watch_party_1.duration)
         end
       end
     end
