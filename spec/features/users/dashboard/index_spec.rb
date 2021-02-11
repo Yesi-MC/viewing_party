@@ -19,7 +19,7 @@ RSpec.describe 'Dashboard Index' do
           expect(page).to have_button('Add Friend')
           expect(page).to have_field(:email)
         end
-    
+
         expect(page).to have_button('Discover Movies')
         click_on 'Discover Movies'
 
@@ -44,7 +44,6 @@ RSpec.describe 'Dashboard Index' do
         expect(current_path).to eq("/users/#{user.id}/dashboard")
 
         within('section#friends') do
-          # User currently has no friends
           expect(page).to_not have_content('You currently have no friends')
           expect(page).to have_content(friend.email)
           expect(page).to have_button('Add Friend')

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe Movie do 
-  it "it exists and has attributes" do 
+RSpec.describe Movie do
+  it "it exists and has attributes" do
     movie = Movie.new({
                       :adult=>false,
                       :backdrop_path=>"/dIWwZW7dJJtqC6CgWzYkNVKIUm8.jpg",
@@ -20,10 +20,9 @@ RSpec.describe Movie do
                       :vote_count=>7049
                       })
 
-    expect(movie).to be_a(Movie) #our instance movie is an instance of the movie class
-    expect(movie.title).to eq("Your Name.") 
-    expect(movie.vote_average).to eq(8.6)                            
-    expect(movie.id).to eq(372058)   
-    #were testing based on our methods not their hash 
+    expect(movie).to be_a(Movie)
+    expect(movie.title).to eq("Your Name.")
+    expect(movie.vote_average).to eq(8.6)
+    expect(movie.id).to eq(372058)
   end
 end

@@ -18,7 +18,7 @@ class MovieService
 
     def movie_details(movie_id)
       response = conn.get("/3/movie/#{movie_id}?api_key=#{ENV['movie_api_key']}")
-      self.parse_data(response)
+      parse_data(response)
     end
 
     def movie_cast(movie_id)
