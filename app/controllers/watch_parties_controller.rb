@@ -11,9 +11,16 @@ class WatchPartiesController < ApplicationController
       redirect_to new_watch_party_path(current_user)
     elsif @watch_party.duration < session[:runtime]
       flash[:error] = "The party cannot end before the length of the movie. Please try again."
+      redirect_to new_watch_party_path(current_user)
+    elsif !@watch_party.valid_party(watch_party_params["date"])
+      flash[:error] = "You can't party in the past, silly!"
+      redirect_to new_watch_party_path(current_user)
     elsif @watch_party.update(movie_title: session[:title], user_id: session[:user_id]) && @watch_party.valid_party(watch_party_params["date"])
       flash[:success] = "Party has been created!"
       @watch_party.save
+      params[:User].each do |guest_id, answer|
+        @watch_party.guests.create(invitee_id: guest_id.to_i, watch_party_id: @watch_party.id) if answer == "1"
+      end
       redirect_to dashboard_path(current_user)
     else
       flash[:error] = "Update failed"

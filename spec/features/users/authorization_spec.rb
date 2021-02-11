@@ -19,9 +19,9 @@ describe 'User registration' do
 
       click_button 'Create User'
 
-      user = User.first
+      user = User.find_by(email: email)
 
-      expect(current_path).to eq(dashboard_path(user))
+      expect(current_path).to eq(dashboard_path(user.id))
       expect(page).to have_content("Welcome, #{email}")
     end
     it 'It redirect users that are logged in to the dashboard' do

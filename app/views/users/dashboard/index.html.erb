@@ -10,7 +10,6 @@
     <p class='lead'>Here you can add friends, discover movies and start a party! </p>
   </div>
 </div>
-
 <div class="card" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title">Friends</h5>
@@ -39,9 +38,28 @@
 <div class="card" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title">Viewing Parties</h5>
-    <p><% current_user.party_host.each do |party| %></p>
-    <p><%= party[:movie_title] %></p>
-    <p><% end %></p>
+    <section id="hosting-parties">
+      <h6>Hosted Parties</h6>
+      <p><% current_user.party_host.each do |party| %></p>
+        <p><%= party[:movie_title] %></p>
+        <ul>
+          <li>Date: <%= party[:date] %></li>
+          <li>Time: <%= party[:time] %></li>
+          <li>Duration: <%= party[:duration] %></li>
+        </ul>
+      <p><% end %></p>
+    </section>
+    <section id="guesting-parties">
+      <h6>Parties Invited To</h6>
+      <p><% current_user.parties_invited_to.each do |party| %></p>
+        <p><%= party.movie_title %></p>
+        <ul>
+          <li>Date: <%= party.date %></li>
+          <li>Time: <%= party.time %></li>
+          <li>Duration: <%= party.duration %></li>
+        </ul>
+      <p><% end %></p>
+    </section>
   </div>
 </div>
 </section>
