@@ -15,11 +15,12 @@ class User < ApplicationRecord
   end
 
   def dates_of_all_my_hosted_watch_parties
-    party_host.select("watch_parties.date").pluck(:date)
+    party_host.select('watch_parties.date').pluck(:date)
   end
 
   def any_same_date_party?(new_party_date)
     return true if dates_of_all_my_hosted_watch_parties.include?(new_party_date)
+
     false
   end
 
@@ -33,6 +34,6 @@ class User < ApplicationRecord
 
   def parties_invited_to
     WatchParty.joins(:guests)
-    .where("guests.invitee_id = ?", self.id)
+              .where('guests.invitee_id = ?', id)
   end
 end

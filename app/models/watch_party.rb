@@ -9,4 +9,8 @@ class WatchParty < ApplicationRecord
   def valid_party(date)
     date > Time.zone.now
   end
+
+  def valid_party_time(time)
+    time > Time.zone.now.strftime('%H:%M')
+  end
 end

@@ -6,9 +6,8 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = user_params
-    user[:email] = user[:email].downcase
-    new_user = User.new(user)
+    user_params[:email] = user_params[:email].downcase
+    new_user = User.new(user_params)
     if new_user.save && EmailAddress.valid?(new_user.email)
       session[:user_id] = new_user.id
       flash[:success] = "Welcome, #{new_user.email}"
