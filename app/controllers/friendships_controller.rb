@@ -17,7 +17,7 @@ class FriendshipsController < ApplicationController
     elsif current_user.friends.include?(friend)
       flash[:notice] = 'Friend already exists'
     else
-      Friendship.create_reciprocal_for_ids(user.id, friend.id)
+      Friendship.create_reciprocal_for_ids(user_id, friend.id)
       flash[:notice] = "You are now friends with #{friend.email}"
     end
   end
