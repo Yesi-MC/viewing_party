@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe Movie do 
-  it "it exists and has attributes" do 
+RSpec.describe Movie do
+  it "it exists and has attributes" do
     movie = Movie.new({
                       :adult=>false,
                       :backdrop_path=>"/dIWwZW7dJJtqC6CgWzYkNVKIUm8.jpg",

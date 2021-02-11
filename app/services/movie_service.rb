@@ -1,8 +1,8 @@
 class MovieService
   class << self
     def top_rated_movies
-      response = conn.get("/3/movie/top_rated?api_key=#{ENV['movie_api_key']}")
-      response2 = conn.get("/3/movie/top_rated?api_key=#{ENV['movie_api_key']}&page=2")
+      response = conn.get("/3/movie/top_rated?")
+      response2 = conn.get("/3/movie/top_rated?&page=2")
       data = parse_data(response)
       data2 = parse_data(response2)
       data[:results].concat(data2[:results])
@@ -25,7 +25,7 @@ class MovieService
       response = conn.get("/3/movie/#{movie_id}/credits?")
       data = JSON.parse(response.body, symbolize_names: true )
       data[:cast][0..9]
-    end
+    end 
 
     def movie_reviews(movie_id)
       response = conn.get("/3/movie/#{movie_id}/reviews?")
@@ -34,8 +34,6 @@ class MovieService
     end
   end
 
-  private
-
   def self.conn
     Faraday.new("https://api.themoviedb.org") do |f|
         f.params['api_key'] = ENV['movie_api_key']
@@ -43,6 +41,6 @@ class MovieService
   end
 
   def self.parse_data(response)
-    JSON.parse(response.body, symbolize_names: true )
+    JSON.parse(response.body, symbolize_names: true)
   end
 end

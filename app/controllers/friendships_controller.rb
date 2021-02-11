@@ -1,20 +1,24 @@
 class FriendshipsController < ApplicationController
   def create
-    user = User.find(params[:id])
-    # Check for friend request via email in exploration
-    # Place conditional here when adding email functionality
-    # For now, assuming we can send request to user and they are auto your friend
-    friend = User.find_by(email: params[:email])
-
-    if user.friends.include?(friend)
-      flash[:error] = 'Friend already exists'
-    elsif friend.nil?
-      flash[:error] = 'Person does not exist!'
-    elsif friend.email == user.email
-      flash[:error] = "You cannot add yourself as a friend!"
+    if User.exists?(email: params[:email])
+      friend = User.find_by(email: params[:email])
+      friendship(current_user.id, friend)
     else
-      Friendship.create!(user_id: user.id, friend_id: friend.id)
+      flash[:notice] = 'Person does not exist!'
     end
-    redirect_to dashboard_path(user)
+    redirect_to dashboard_path(current_user)
+  end
+
+  private
+
+  def friendship(user_id, friend)
+    if friend.id == user_id
+      flash[:notice] = 'You cannot add yourself as a friend'
+    elsif current_user.friends.include?(friend)
+      flash[:notice] = 'Friend already exists'
+    else
+      Friendship.create!(user_id: user_id, friend_id: friend.id)
+      flash[:notice] = "You are now friends with #{friend.email}"
+    end
   end
 end

@@ -1,6 +1,5 @@
 class Users::DashboardController < ApplicationController
   def index
-    @user = User.find(params[:id])
-    @friends = @user.friends
+    @friends = current_user.friends
   end
 end

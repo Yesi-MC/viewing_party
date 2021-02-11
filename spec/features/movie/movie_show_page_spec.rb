@@ -21,7 +21,7 @@ RSpec.describe 'Movie Show Page' do
 
           click_button 'Log In'
 
-          visit movie_details_path(movie_id)
+          visit movies_details_path(movie_id)
 
           expect(page).to have_content("Movie Title: Lock, Stock and Two Smoking Barrels")
           expect(page).to have_content("Movie Vote Average: 8.2")
@@ -59,7 +59,7 @@ RSpec.describe 'Movie Show Page' do
 
       click_button 'Log In'
 
-      visit movie_details_path(movie_id)
+      visit movies_details_path(movie_id)
       
       expect(page).to have_button("Create a Viewing Party for Movie")
 

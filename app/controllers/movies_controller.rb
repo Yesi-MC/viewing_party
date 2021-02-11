@@ -5,15 +5,15 @@ class MoviesController < ApplicationController
 
   def search
     movie_search = params[:movie]
-    if movie_search == ""
-      flash[:notice] = "Please Enter a Movie Title"
+    if movie_search == ''
+      flash[:notice] = 'Please Enter a Movie Title'
       redirect_to discover_index_path
-    else 
+    else
       @movies = MovieFacade.search_movie(movie_search)
     end
   end
 
-  def details 
+  def details
     @movie_details = MovieFacade.api_movie_details(params[:id])
     session[:title] = @movie_details.title
     session[:runtime] = @movie_details.runtime

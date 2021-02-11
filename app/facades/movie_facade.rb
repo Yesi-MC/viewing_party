@@ -5,9 +5,9 @@ class MovieFacade
     data.map { |movie| Movie.new(movie) }
   end
 
-  def self.search_movie(movie_search) 
+  def self.search_movie(movie_search)
     data = MovieService.search_movie(movie_search)
-    data.map { |movie| Movie.new(movie) } 
+    data.map { |movie| Movie.new(movie) }
   end
 
   def self.api_movie_details(movie_id)

@@ -25,7 +25,7 @@ http_interactions:
       Connection:
       - keep-alive
       Date:
-      - Tue, 09 Feb 2021 01:28:58 GMT
+      - Wed, 10 Feb 2021 23:42:20 GMT
       Server:
       - openresty
       Access-Control-Allow-Origin:
@@ -38,35 +38,39 @@ http_interactions:
       Cache-Control:
       - public, max-age=21600
       X-Memc:
-      - MISS, STORE
+      - HIT
       X-Memc-Key:
       - 4d89ed99fb7cf03409d2b6d4d189f20bb9c276f6
       X-Memc-Age:
-      - '0'
+      - '14115'
       X-Memc-Expires:
-      - '21600'
+      - '7485'
+      Etag:
+      - W/"46ae027bcf2d33d9a8ff9b6230da7f0c"
       Last-Modified:
-      - '2021-01-26 23:52:18 +0000'
+      - Wed, 10 Feb 2021 23:42:20 GMT
       Vary:
       - Accept-Encoding
       X-Cache:
-      - Miss from cloudfront
+      - Hit from cloudfront
       Via:
-      - 1.1 6328d32449cd285f3f7c7b3c41dbe9ad.cloudfront.net (CloudFront)
+      - 1.1 d29afc70fc2fdadee440493854714224.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
-      - SFO5-C3
+      - DEN50-C2
       X-Amz-Cf-Id:
-      - 5ahxL1SSnSYD1bGQbLJ1ffejUc91quUmeDHdTYQWUzZp5csMbWgKIA==
+      - IkUs8HffyBV-nXBzBvBNFWefSVlvBEK6pIUnHIQ5ipoCJMFka32A7A==
+      Age:
+      - '9544'
     body:
       encoding: ASCII-8BIT
       string: '{"adult":false,"backdrop_path":null,"belongs_to_collection":null,"budget":0,"genres":[{"id":10751,"name":"Family"},{"id":12,"name":"Adventure"},{"id":28,"name":"Action"}],"homepage":"","id":790493,"imdb_id":null,"original_language":"en","original_title":"Untitled
         Spy Kids Reboot","overview":"A reboot of the family franchise centred around
-        a multi-cultural family of spies.","popularity":0.891,"poster_path":null,"production_companies":[{"id":82819,"logo_path":"/5Z8WWr0Lf1tInVWwJsxPP0uMz9a.png","name":"Skydance
+        a multi-cultural family of spies.","popularity":0.634,"poster_path":null,"production_companies":[{"id":82819,"logo_path":"/5Z8WWr0Lf1tInVWwJsxPP0uMz9a.png","name":"Skydance
         Media","origin_country":"US"},{"id":143790,"logo_path":null,"name":"Spyglass
         Media Group","origin_country":"US"}],"production_countries":[{"iso_3166_1":"US","name":"United
         States of America"}],"release_date":"","revenue":0,"runtime":0,"spoken_languages":[{"english_name":"English","iso_639_1":"en","name":"English"}],"status":"Planned","tagline":"","title":"Untitled
         Spy Kids Reboot","video":false,"vote_average":0.0,"vote_count":0}'
-  recorded_at: Tue, 09 Feb 2021 01:28:58 GMT
+  recorded_at: Thu, 11 Feb 2021 02:21:24 GMT
 - request:
     method: get
     uri: https://api.themoviedb.org/3/movie/790493/credits?api_key=DONT_EXPOSE_MY_DATA
@@ -92,7 +96,7 @@ http_interactions:
       Connection:
       - keep-alive
       Date:
-      - Tue, 09 Feb 2021 01:28:58 GMT
+      - Wed, 10 Feb 2021 23:42:20 GMT
       Server:
       - openresty
       Access-Control-Allow-Origin:
@@ -105,35 +109,39 @@ http_interactions:
       Cache-Control:
       - public, max-age=21600
       X-Memc:
-      - MISS, STORE
+      - HIT
       X-Memc-Key:
       - c7f0da79b2e2c52ecaa2aa0790dce6451d778633
       X-Memc-Age:
-      - '0'
+      - '10412'
       X-Memc-Expires:
-      - '21600'
+      - '11188'
+      Etag:
+      - W/"50c48a2e9a3f8db65842b64bf5069caf"
       Last-Modified:
-      - '2021-01-26 23:52:18 +0000'
+      - Wed, 10 Feb 2021 23:42:20 GMT
       Vary:
       - Accept-Encoding
       X-Cache:
-      - Miss from cloudfront
+      - Hit from cloudfront
       Via:
-      - 1.1 85b7effac42880c27a876de745128703.cloudfront.net (CloudFront)
+      - 1.1 8bd27032f0d38908fbe32b696e45c288.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
-      - SFO5-C3
+      - DEN50-C2
       X-Amz-Cf-Id:
-      - khwN8zeCfyNKsM-yXQmP5TSVDFEI8dUuAohqej9SpR6HzCGK7j2oDg==
+      - OxSlXiBAnHgJ2pdXHX7e-pPOwuaX2bR6sKdPW3Gkhf-LOQsE3Jojxw==
+      Age:
+      - '9544'
     body:
       encoding: ASCII-8BIT
       string: '{"id":790493,"cast":[],"crew":[{"adult":false,"gender":2,"id":2294,"known_for_department":"Directing","name":"Robert
-        Rodriguez","original_name":"Robert Rodriguez","popularity":3.124,"profile_path":"/bPqRdLWWwpOT8sBdj9PWOzNgwou.jpg","credit_id":"601078b3ccde04003f25ce63","department":"Writing","job":"Screenplay"},{"adult":false,"gender":2,"id":2294,"known_for_department":"Directing","name":"Robert
-        Rodriguez","original_name":"Robert Rodriguez","popularity":3.124,"profile_path":"/bPqRdLWWwpOT8sBdj9PWOzNgwou.jpg","credit_id":"601078879a6435003f94c079","department":"Directing","job":"Director"},{"adult":false,"gender":2,"id":4507,"known_for_department":"Production","name":"Gary
-        Barber","original_name":"Gary Barber","popularity":1.381,"profile_path":"/5hl0IF9xGyWojIQj0kMrWh88BNw.jpg","credit_id":"601078c50b5fd6003c61d3fc","department":"Production","job":"Executive
+        Rodriguez","original_name":"Robert Rodriguez","popularity":5.232,"profile_path":"/bPqRdLWWwpOT8sBdj9PWOzNgwou.jpg","credit_id":"601078b3ccde04003f25ce63","department":"Writing","job":"Screenplay"},{"adult":false,"gender":2,"id":2294,"known_for_department":"Directing","name":"Robert
+        Rodriguez","original_name":"Robert Rodriguez","popularity":5.232,"profile_path":"/bPqRdLWWwpOT8sBdj9PWOzNgwou.jpg","credit_id":"601078879a6435003f94c079","department":"Directing","job":"Director"},{"adult":false,"gender":2,"id":4507,"known_for_department":"Production","name":"Gary
+        Barber","original_name":"Gary Barber","popularity":0.764,"profile_path":"/5hl0IF9xGyWojIQj0kMrWh88BNw.jpg","credit_id":"601078c50b5fd6003c61d3fc","department":"Production","job":"Executive
         Producer"},{"adult":false,"gender":0,"id":1662775,"known_for_department":"Production","name":"Peter
-        Oillataguerre","original_name":"Peter Oillataguerre","popularity":0.629,"profile_path":null,"credit_id":"601078e10e597b004134d4de","department":"Production","job":"Executive
+        Oillataguerre","original_name":"Peter Oillataguerre","popularity":0.697,"profile_path":null,"credit_id":"601078e10e597b004134d4de","department":"Production","job":"Executive
         Producer"}]}'
-  recorded_at: Tue, 09 Feb 2021 01:28:58 GMT
+  recorded_at: Thu, 11 Feb 2021 02:21:24 GMT
 - request:
     method: get
     uri: https://api.themoviedb.org/3/movie/790493/reviews?api_key=DONT_EXPOSE_MY_DATA
@@ -159,7 +167,7 @@ http_interactions:
       Connection:
       - keep-alive
       Date:
-      - Tue, 09 Feb 2021 01:28:58 GMT
+      - Wed, 10 Feb 2021 23:42:20 GMT
       Server:
       - openresty
       Access-Control-Allow-Origin:
@@ -182,15 +190,17 @@ http_interactions:
       Last-Modified:
       - '2021-01-26 23:52:18 +0000'
       X-Cache:
-      - Miss from cloudfront
+      - Hit from cloudfront
       Via:
-      - 1.1 457f6aac6043da8b82d532af40ff19c2.cloudfront.net (CloudFront)
+      - 1.1 b7f0c5734a286f56595c1e1b456020a2.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
-      - SFO5-C3
+      - DEN50-C2
       X-Amz-Cf-Id:
-      - Sw16htd4GCeFl1awUpY9ZeHD-M8YWsag4PLJZ-ANmCscov1Nx1S1aA==
+      - WY9NRtz89ltV9akqNxeotVtF3vA3el_dBhBLAqS8OyokVavkeUdZZw==
+      Age:
+      - '9544'
     body:
       encoding: UTF-8
       string: '{"id":790493,"page":1,"results":[],"total_pages":0,"total_results":0}'
-  recorded_at: Tue, 09 Feb 2021 01:28:58 GMT
+  recorded_at: Thu, 11 Feb 2021 02:21:24 GMT
 recorded_with: VCR 6.0.0

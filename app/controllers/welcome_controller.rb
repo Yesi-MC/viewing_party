@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
   def index
-    redirect_to "/users/#{@current_user.id}/dashboard" if current_user
+    redirect_to dashboard_path(current_user) if current_user
   end
 end
