@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     if new_user.save && EmailAddress.valid?(new_user.email)
       session[:user_id] == new_user.id
       flash[:success] = "Welcome, #{new_user.email}"
-      redirect_to "/users/#{new_user.id}/dashboard"
+      redirect_to "/users/#{current_user.id}/dashboard"
     else
       flash[:error] = 'Invalid credentials, please try again.'
       redirect_to new_user_path
