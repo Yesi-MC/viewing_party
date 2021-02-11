@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       session[:user_id] = new_user.id
       RegistrationNotifierMailer.welcome(new_user).deliver_now
       flash[:success] = "Welcome, #{new_user.email}"
-      redirect_to "/users/#{current_user.id}/dashboard"
+      redirect_to dashboard_path(current_user)
     else
       flash[:error] = 'Invalid credentials, please try again.'
       redirect_to new_user_path
