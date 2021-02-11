@@ -15,8 +15,8 @@
       <div class="form-group">
         <%= f.label :password, 'Password' %>
         <%= f.password_field :password %><br/>
-        <%= f.label :password_confirmation, 'Confirm Password' %>
-        <%= f.password_field :password_confirmation %>
+        <%= f.label :password_confirmation, 'Confirm Password'%>
+        <%= f.password_field :password_confirmation, required: true  %>
         <%= f.submit 'Create User' %>
         <% end %>
       </div>

@@ -19,14 +19,15 @@ RSpec.describe 'New Party Page' do
             click_on "Log In"
 
             click_on "Discover Movies"
-            
+
             fill_in "movie", with: "Untitled Spy Kids Reboot"
             click_on "Search"
-         
             click_on "Untitled Spy Kids Reboot"
 
             click_on "Create a Viewing Party for Movie"
 
+
+            fill_in "watch_party[time]", with: "22:00"
             fill_in "watch_party[date]", with: "03-03-2021"
             fill_in "watch_party[duration]", with: "120"
 
@@ -34,7 +35,7 @@ RSpec.describe 'New Party Page' do
             expect(page).to have_content("Movie: Untitled Spy Kids Reboot")
 
             expect(page).to have_content(friend.email)
-            
+
             within("section#friend-#{friend.id}") do
               check "User_#{friend.id}"
             end

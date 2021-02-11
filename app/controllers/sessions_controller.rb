@@ -5,10 +5,10 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       flash[:success] = "Welcome, #{user.email}"
 
-      redirect_to "/users/#{user.id}/dashboard"
+      redirect_to dashboard_path(user)
     else
       flash[:error] = 'Invalid credentials, please try again.'
-      redirect_to '/login'
+      redirect_to login_path
     end
   end
 

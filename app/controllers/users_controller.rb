@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :downcase_email, except: :new
+
   def new
     @user = User.new
   end
@@ -19,7 +21,13 @@ class UsersController < ApplicationController
 
   private
 
+  def downcase_email
+    user = user_params
+    user[:email] = user[:email].downcase
+    @new_user = User.new(user)
+  end
+
   def user_params
-    params.require(:user).permit(:email, :password)
+    params.require(:user).permit(:email, :password, :password_confirmation)
   end
 end

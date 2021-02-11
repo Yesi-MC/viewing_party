@@ -19,7 +19,7 @@ RSpec.describe 'Dashboard Index' do
           expect(page).to have_button('Add Friend')
           expect(page).to have_field(:email)
         end
-    
+
         expect(page).to have_button('Discover Movies')
         click_on 'Discover Movies'
 
@@ -86,7 +86,7 @@ RSpec.describe 'Dashboard Index' do
           expect(page).not_to have_content(email)
           expect(page).to have_content("You currently have no friends")
         end
-        expect(page).to have_content("You cannot add yourself as a friend!")
+        expect(page).to have_content("You cannot add yourself as a friend")
       end
     end
     describe 'Sad Paths' do

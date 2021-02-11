@@ -22,7 +22,7 @@
       <p> <%= friend.email %> </p>
       <% end %>
       <% end %>
-      <%= form_tag friends_path(@user), method: :post do %>
+      <%= form_tag friends_path(current_user), method: :post do %>
       <%= label_tag :email, 'Friend Email' %>
       <%= text_field_tag :email %>
       <%= submit_tag "Add Friend"%>
