@@ -17,6 +17,7 @@ RSpec.describe 'New Party Page' do
             fill_in "email", with: user.email
             fill_in "password", with: user.password
             click_on "Log In"
+
             click_on "Discover Movies"
 
             fill_in "movie", with: "Untitled Spy Kids Reboot"
@@ -25,14 +26,12 @@ RSpec.describe 'New Party Page' do
 
             click_on "Create a Viewing Party for Movie"
 
+
             fill_in "watch_party[time]", with: "22:00"
             fill_in "watch_party[date]", with: "03-03-2021"
             fill_in "watch_party[duration]", with: "120"
 
             expect(current_path).to eq(new_watch_party_path(user))
-            # expect(find_field("watch_party[date]").value).to have_content(Time.now.strftime("%Y-%m-%d"))
-            # expect(find_field("watch_party[duration]").value).to have_content("0")
-            # expect(find_field("watch_party[time]").value).to have_content("10:00:AM")
             expect(page).to have_content("Movie: Untitled Spy Kids Reboot")
 
             expect(page).to have_content(friend.email)
@@ -54,6 +53,37 @@ RSpec.describe 'New Party Page' do
     end
   end
   describe 'Sad Path' do
+    it 'cannot create a party with a date that the user is hosting another party on' do
+      VCR.use_cassette("search_movies") do
+        VCR.use_cassette("spy_kids_details") do
+          user = User.create(email: 'user@example.com', password: '1234')
+          party = user.watch_parties.create(movie_title: "Test", date: "03-03-2021", duration: 150, time: "15:00")
 
+          visit login_path
+
+          fill_in "email", with: user.email
+          fill_in "password", with: user.password
+          click_on "Log In"
+
+          click_on "Discover Movies"
+          
+          fill_in "movie", with: "Untitled Spy Kids Reboot"
+          click_on "Search"
+       
+          click_on "Untitled Spy Kids Reboot"
+
+          click_on "Create a Viewing Party for Movie"
+
+          fill_in "watch_party[date]", with: party.date
+          fill_in "watch_party[time]", with: party.time
+          fill_in "watch_party[duration]", with: "120"
+
+          click_button "Create Party"
+
+          expect(current_path).to eq(new_watch_party_path(user))
+          expect(page).to have_content("You have scheduled another party at this time and date. Please try again.")
+        end
+      end
+    end
   end
 end

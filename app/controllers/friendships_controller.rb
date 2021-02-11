@@ -20,5 +20,7 @@ class FriendshipsController < ApplicationController
       Friendship.create!(user_id: user_id, friend_id: friend.id)
       flash[:notice] = "You are now friends with #{friend.email}"
     end
+
+    redirect_to dashboard_path(user)
   end
 end

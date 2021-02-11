@@ -6,8 +6,8 @@
 
   <%= f.label :date%>
   <%= f.date_field(:date,:value => Time.now.strftime("%m-%d-%Y"), required: :true) %><br/><br/>
-  <%= f.label :time %> (HH:MM AM/PM)
-  <%= f.time_field :time, value: Time.now, required: :true %><br/><br/>
+  <%= f.label :time %> (HH:MM)
+  <%= f.time_field :time, value: Time.now.strftime("%H:%M"), required: :true %><br/><br/>
 
   <%= f.label :duration %> (Minutes)
   <%= f.text_field :duration , id: "runtime" %><br/><br/>

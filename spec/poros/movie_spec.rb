@@ -20,9 +20,9 @@ RSpec.describe Movie do
                       :vote_count=>7049
                       })
 
-    expect(movie).to be_a(Movie)
-    expect(movie.title).to eq("Your Name.")
-    expect(movie.vote_average).to eq(8.6)
-    expect(movie.id).to eq(372058)
+    expect(movie).to be_a(Movie) 
+    expect(movie.title).to eq("Your Name.") 
+    expect(movie.vote_average).to eq(8.6)                            
+    expect(movie.id).to eq(372058)   
   end
 end

@@ -3,13 +3,13 @@ require 'rails_helper'
 RSpec.describe MovieFacade do
   context "class methods" do
     it "call_api_for_all_top_rated_movies" do
-      VCR.use_cassette("top_movies") do
+      VCR.use_cassette("top_movies") do 
 
         data = MovieFacade.call_api_for_all_top_rated_movies
 
         expect(data).to be_a(Array)
         expect(data.count).to eq(40)
-        expect(data.first).to be_a(Movie)
+        expect(data.first).to be_a(Movie) 
       end
     end
     it 'can search for a specific movie' do
