@@ -10,11 +10,4 @@ class WatchParty < ApplicationRecord
   def valid_party(date)
     date > Time.now
   end
-
-  # def same_day(date, time)
-  #   watch_parties.any? do |party|
-  #     party.date == date && party.time == time
-  #   end
-  # end
-
 end
